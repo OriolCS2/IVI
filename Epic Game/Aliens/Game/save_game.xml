@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<game_state>
+	<input />
+	<window />
+	<textures />
+	<audio>
+		<volume value="50" />
+	</audio>
+	<choose />
+	<map />
+	<scene>
+		<KnowMap value="0" />
+	</scene>
+	<pathfinding />
+	<fonts />
+	<:anonymous />
+	<entity_manager>
+		<spider>
+			<position x="6800" y="797.766663" />
+		</spider>
+		<spider>
+			<position x="10500" y="802.766663" />
+		</spider>
+		<bat>
+			<position x="6000" y="600" />
+		</bat>
+		<bat>
+			<position x="8000" y="400" />
+		</bat>
+		<bat>
+			<position x="9500" y="600" />
+		</bat>
+		<player>
+			<position x="2203.20166" y="820.975159" />
+			<god value="false" />
+			<NumPlayer value="2" />
+		</player>
+	</entity_manager>
+	<UI />
+	<particles />
+	<:anonymous />
+	<renderer>
+		<camera x="-1703" y="-290" />
+	</renderer>
+</game_state>
