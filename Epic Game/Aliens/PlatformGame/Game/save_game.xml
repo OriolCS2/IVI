@@ -1,0 +1,96 @@
+<?xml version="1.0"?>
+<game_state>
+	<input />
+	<window />
+	<textures />
+	<audio>
+		<volume value="90" />
+		<fxvolume value="70" />
+		<general value="50" />
+	</audio>
+	<map />
+	<scene>
+		<KnowMap value="0" />
+	</scene>
+	<pathfinding />
+	<fonts />
+	<:anonymous />
+	<UI />
+	<choose />
+	<particles />
+	<entity_manager>
+		<spider>
+			<position x="6801.43994" y="745.366699" />
+		</spider>
+		<spider>
+			<position x="10501.4395" y="736.43335" />
+		</spider>
+		<bat>
+			<position x="6000" y="600" />
+		</bat>
+		<bat>
+			<position x="8000" y="400" />
+		</bat>
+		<bat>
+			<position x="9500" y="600" />
+		</bat>
+		<coin>
+			<position x="1173" y="442" />
+		</coin>
+		<coin>
+			<position x="1395" y="305" />
+		</coin>
+		<coin>
+			<position x="1395" y="525" />
+		</coin>
+		<coin>
+			<position x="2416" y="818" />
+		</coin>
+		<coin>
+			<position x="3057" y="538" />
+		</coin>
+		<coin>
+			<position x="3445" y="608" />
+		</coin>
+		<coin>
+			<position x="3833" y="608" />
+		</coin>
+		<coin>
+			<position x="4385" y="405" />
+		</coin>
+		<coin>
+			<position x="5015" y="640" />
+		</coin>
+		<coin>
+			<position x="5580" y="660" />
+		</coin>
+		<coin>
+			<position x="6170" y="545" />
+		</coin>
+		<coin>
+			<position x="7340" y="680" />
+		</coin>
+		<coin>
+			<position x="8200" y="825" />
+		</coin>
+		<coin>
+			<position x="9140" y="680" />
+		</coin>
+		<coin>
+			<position x="9947" y="615" />
+		</coin>
+		<coin>
+			<position x="10500" y="685" />
+		</coin>
+		<player>
+			<position x="925.700317" y="545.599792" />
+			<god value="false" />
+			<NumPlayer value="0" />
+			<lives value="3" />
+		</player>
+	</entity_manager>
+	<:anonymous />
+	<renderer>
+		<camera x="-401" y="-161" />
+	</renderer>
+</game_state>
