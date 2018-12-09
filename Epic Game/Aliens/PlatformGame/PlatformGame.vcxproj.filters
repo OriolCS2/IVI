@@ -19,9 +19,6 @@
     <ClCompile Include="j1Input.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
-    <ClCompile Include="j1Map.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
     <ClCompile Include="j1Main.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
@@ -52,20 +49,8 @@
     <ClCompile Include="Player.cpp">
       <Filter>Modules\Entities</Filter>
     </ClCompile>
-    <ClCompile Include="Spider.cpp">
-      <Filter>Modules\Entities</Filter>
-    </ClCompile>
     <ClCompile Include="j1Particles.cpp">
       <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="j1Pathfinding.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Bat.cpp">
-      <Filter>Modules\Entities</Filter>
-    </ClCompile>
-    <ClCompile Include="MovingPlatform.cpp">
-      <Filter>Modules\Entities</Filter>
     </ClCompile>
     <ClCompile Include="UI_Manager.cpp">
       <Filter>Modules</Filter>
@@ -93,9 +78,6 @@
     </ClCompile>
     <ClCompile Include="Slider.cpp">
       <Filter>Modules\UI</Filter>
-    </ClCompile>
-    <ClCompile Include="Coin.cpp">
-      <Filter>Modules\Entities</Filter>
     </ClCompile>
     <ClCompile Include="j1Menu.cpp">
       <Filter>Modules</Filter>
@@ -153,9 +135,6 @@
     <ClInclude Include="j1Window.h">
       <Filter>Modules</Filter>
     </ClInclude>
-    <ClInclude Include="j1Map.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
     <ClInclude Include="j1PerfTimer.h">
       <Filter>Modules\timer</Filter>
     </ClInclude>
@@ -171,23 +150,11 @@
     <ClInclude Include="Player.h">
       <Filter>Modules\Entities</Filter>
     </ClInclude>
-    <ClInclude Include="Spider.h">
-      <Filter>Modules\Entities</Filter>
-    </ClInclude>
     <ClInclude Include="j1Particles.h">
       <Filter>Modules</Filter>
     </ClInclude>
     <ClInclude Include="p2DynArray.h">
       <Filter>p2</Filter>
-    </ClInclude>
-    <ClInclude Include="j1Pathfinding.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Bat.h">
-      <Filter>Modules\Entities</Filter>
-    </ClInclude>
-    <ClInclude Include="MovingPlatform.h">
-      <Filter>Modules\Entities</Filter>
     </ClInclude>
     <ClInclude Include="UI_Manager.h">
       <Filter>Modules</Filter>
@@ -215,9 +182,6 @@
     </ClInclude>
     <ClInclude Include="Slider.h">
       <Filter>Modules\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="Coin.h">
-      <Filter>Modules\Entities</Filter>
     </ClInclude>
     <ClInclude Include="j1Menu.h">
       <Filter>Modules</Filter>

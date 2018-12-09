@@ -78,20 +78,15 @@ bool j1Particles::Update(float dt)
 		if (p == nullptr)
 			continue;
 
-			if (p->Update() == false && !App->scene->GamePaused)
-			{
 				delete p;
 				active[i] = nullptr;
-			}
+		
 			
-			else if (SDL_GetTicks() >= p->born)
+			if (SDL_GetTicks() >= p->born)
 			{
-				if (!App->scene->GamePaused)
+				
 					App->render->Blit(App->entitymanager->GetPlayerData()->texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame(App->entitymanager->GetPlayerData()->DT)));
-				else {
-					p->born = SDL_GetTicks();
-					App->render->Blit(App->entitymanager->GetPlayerData()->texture, p->position.x, p->position.y, &(p->anim.frames[p->anim.SeeCurrentFrame()]));
-				}
+				
 				if (p->fx_played == false)
 				{
 					p->fx_played = true;
@@ -166,18 +161,18 @@ bool Particle::Update()
 	bool ret = true;
 	
 	
-	if (life > 0 && !App->scene->GamePaused)
+	if (life > 0)
 	{
 		if ((SDL_GetTicks() - born) > life)
 			ret = false;
 	}
 	else
-		if (anim.Finished() && !App->scene->GamePaused)
+		if (anim.Finished())
 			ret = false;
-	if (!App->scene->GamePaused) {
+	
 		position.x += (speed.x * App->entitymanager->GetPlayerData()->DT);
 		position.y += (speed.y * App->entitymanager->GetPlayerData()->DT);
-	}
+	
 	
 	
 

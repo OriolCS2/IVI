@@ -10,13 +10,11 @@
 #include "j1Textures.h"
 #include "j1Audio.h"
 #include "j1Scene.h"
-#include "j1Map.h"
 #include "j1App.h"
 #include "EntityManager.h"
 #include "j1Collision.h"
 #include "j1Menu.h"
 #include "j1Particles.h"
-#include "j1Pathfinding.h"
 #include "UI_Manager.h"
 #include "j1FadeToBlack.h"
 #include "j1Fonts.h"
@@ -35,12 +33,10 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	tex = new j1Textures();
 	audio = new j1Audio();
 	scene = new j1Scene();
-	map = new j1Map();
 	collision = new j1Collision();
 	entitymanager = new EntityManager();
 	menu = new j1Menu();
 	particles = new j1Particles();
-	pathfinding = new j1PathFinding();
 	ui_manager = new UI_Manager();
 	fade = new j1FadeToBlack();
 	fonts = new j1Fonts();
@@ -52,11 +48,11 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	AddModule(tex);
 	AddModule(audio);
 	
-	AddModule(map);
+
 	AddModule(scene);
 	
 	
-	AddModule(pathfinding);
+
 	AddModule(fonts);
 	AddModule(collision);
 

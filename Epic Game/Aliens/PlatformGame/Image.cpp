@@ -14,9 +14,9 @@ Image::Image(int x, int y, bool WantToBeMoved, UI_Element* parent) : UI_Element(
 		Distance.y = Scree_pos.y - (-App->render->camera.y);
 	}
 	this->WantToBeMoved = WantToBeMoved;
-	width = WIDTH;
-	height = HEIGHT;
-	png_pos = {IDLE};
+	width = WIDTHH;
+	height = HEIGHTT;
+	png_pos = {IDLEE};
 
 }
 

@@ -7,13 +7,9 @@
 #include "j1Window.h"
 #include "j1Collision.h"
 #include "p2Log.h"
-#include "j1Map.h"
 #include "j1Scene.h"
 #include "Player.h"
-#include "Spider.h"
-#include"MovingPlatform.h"
-#include "Coin.h"
-#include "Bat.h"
+
 
 #include "Brofiler/Brofiler.h"
 
@@ -139,26 +135,9 @@ Entity* EntityManager::CreateEntity(EntityType type, int x, int y)
 	Entity* ret = nullptr;
 	while (ret == nullptr) {
 		switch (type) {
-		case EntityType::SPIDER: {ret = new Spider(x, y);
-			ret->type = SPIDER;
-			break;
-		}
-		case EntityType::BAT: {ret = new Bat(x, y);
-			ret->type = BAT;
-			break;
-		}
-		case EntityType::MOVING_PLATFORM: {ret = new MovingPlatform(x, y);
-			ret->type = MOVING_PLATFORM;
-			break;
-		}
 		case EntityType::PLAYER: {ret = new Player();
 			ret->type = PLAYER;
 			break; }
-		case EntityType::COIN: {
-			ret = new Coin(x, y);
-			ret->type = COIN;
-			break;
-		}
 		}
 		if (ret != nullptr)
 			entities.PushBack(ret);
@@ -215,23 +194,7 @@ bool EntityManager::Load(pugi::xml_node& load)
 {
 	bool ret = true;
 
-	DeleteEnemies();
-	for (int i = 0; i < entities.Count(); i++) {
-		if (entities[i] != nullptr && entities[i]->type == PLAYER) {
-			pugi::xml_node& player = load.child("player");
-			entities[i]->Load(player);
-		}
-	}
 
-	for (pugi::xml_node spider = load.child("spider"); spider; spider = spider.next_sibling("spider")) {
-		CreateEntity(EntityType::SPIDER, spider.child("position").attribute("x").as_float(), spider.child("position").attribute("y").as_float() - 80.0f);
-	}
-	for (pugi::xml_node bat = load.child("bat"); bat; bat = bat.next_sibling("bat")) {
-		CreateEntity(EntityType::BAT, bat.child("position").attribute("x").as_float(), bat.child("position").attribute("y").as_float());
-	}
-	for (pugi::xml_node coin = load.child("coin"); coin; coin = coin.next_sibling("coin")) {
-		CreateEntity(EntityType::COIN, coin.child("position").attribute("x").as_float(), coin.child("position").attribute("y").as_float());
-	}
 
 	return ret;
 }
@@ -239,31 +202,7 @@ bool EntityManager::Load(pugi::xml_node& load)
 bool EntityManager::Save(pugi::xml_node& save) const
 {
 	bool ret = true;
-	for (int i = 0; i < entities.Count(); i++) {
-		if (entities[i] != nullptr && entities[i]->type == SPIDER) {
-			pugi::xml_node& spider = save.append_child("spider");
-			entities[i]->Save(spider);
-		}	
-	}
-	for (int i = 0; i < entities.Count(); i++) {
-		if (entities[i] != nullptr && entities[i]->type == BAT) {
-			pugi::xml_node& bat = save.append_child("bat");
-			entities[i]->Save(bat);
-		}
-	}
-	for (int i = 0; i < entities.Count(); i++) {
-		if (entities[i] != nullptr && entities[i]->type == COIN) {
-			pugi::xml_node& coin = save.append_child("coin");
-			entities[i]->Save(coin);
-		}
-	}
-	for (int i = 0; i < entities.Count(); i++) {
-		if (entities[i] != nullptr && entities[i]->type == PLAYER) {
-			pugi::xml_node& player = save.append_child("player");
-			entities[i]->Save(player);
-		}
-	}
-
+	
 	return ret;
 }
 
