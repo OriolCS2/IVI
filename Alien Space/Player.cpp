@@ -105,6 +105,7 @@ void Player::OnCollision(Collider * c2) //this determine what happens when the p
 
 void Player::Controls()
 {
+
 	if (position.x >= -App->render->camera.x + 9) {
 		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) {
 			position.x -= 400 * DT;

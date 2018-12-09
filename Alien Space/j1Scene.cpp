@@ -71,7 +71,9 @@ bool j1Scene::PostUpdate()
 {
 	BROFILER_CATEGORY("Scene: PostUpdate", Profiler::Color::LightYellow);
 	bool ret = true;
-
+	if (App->input->GetKey(SDL_SCANCODE_H) == KEY_DOWN) {
+		SpawnEnemies();
+	}
 
 	return ret;
 }
@@ -102,7 +104,15 @@ bool j1Scene::Save(pugi::xml_node & scene) const
 void j1Scene::SpawnEnemies()
 {
 
-	App->enemies->AddEnemy(VERTICAL_SHIP, 300, 300);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 25, 10);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 76, 10);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 126, 10);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 177, 10); 
+	App->enemies->AddEnemy(VERTICAL_SHIP, 228, 10);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 279, 10);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 330, 10);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 381, 10);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 432, 10);
 
 }
 

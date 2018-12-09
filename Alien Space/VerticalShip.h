@@ -2,6 +2,8 @@
 #define __ENEMY_VERTICALSHIP_H__
 
 #include "Enemy.h"
+#include "path.h"
+#include "p2Point.h"
 
 class Enemy_VerticalShip : public Enemy
 {
@@ -9,10 +11,9 @@ private:
 	float wave = -1.0f;
 	bool going_up = true;
 	int original_y = 0;
+	iPoint original_pos;
 	Animation fly;
-	int shot = 0;
-	float x, y, m;
-	bool gun;
+	Path path;
 
 public:
 

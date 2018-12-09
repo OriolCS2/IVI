@@ -3,7 +3,9 @@
 #include "J1Collision.h"
 #include "J1Particles.h"
 #include "ModuleEnemies.h"
-
+#include "path.h"
+#include "Player.h"
+#include "EntityManager.h"
 
 #include <math.h>  
 
@@ -14,17 +16,20 @@ Enemy_VerticalShip::Enemy_VerticalShip(int x, int y) : Enemy(x, y)
 	type = VERTICAL_SHIP;
 
 	fly.PushBack({ 0, 0, 41, 41 }); // 1
+
 	
 
 	animation = &fly;
 
 	collider = App->collision->AddCollider({ 0, 0, 41, 21 }, COLLIDER_TYPE::COLLIDER_ENEMY_BAT, (j1Module*)App->enemies);
-	
+	original_pos.x = x;
+	original_pos.y = y;
 	original_y = y;
 }
 
 void Enemy_VerticalShip::Move(float dt)
 {
+	
 	
 
 }
