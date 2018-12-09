@@ -136,7 +136,9 @@ bool j1Menu::PostUpdate()
 			App->scene->active = !App->scene->active;
 			App->collision->active = !App->collision->active;
 			App->entitymanager->ActiveGame = true;
+			App->scene->SpawnEnemies();
 			App->entitymanager->GetPlayerData()->Start();
+
 			GameOn = true;
 		}
 	}

@@ -13,15 +13,12 @@ Enemy_VerticalShip::Enemy_VerticalShip(int x, int y) : Enemy(x, y)
 {
 	type = VERTICAL_SHIP;
 
-	fly.PushBack({ 311, 4, 23, 17 }); // 1
-	fly.PushBack({ 340, 2, 23, 20 }); // 2
-	fly.PushBack({ 368,0,23,22 }); // 3
-	fly.PushBack({ 396,1,23,19 }); // 4
-	fly.speed = 0.08f;
+	fly.PushBack({ 0, 0, 41, 41 }); // 1
+	
 
 	animation = &fly;
 
-	collider = App->collision->AddCollider({ 0, 0, 23, 22 }, COLLIDER_TYPE::COLLIDER_ENEMY_BAT, (j1Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 41, 21 }, COLLIDER_TYPE::COLLIDER_ENEMY_BAT, (j1Module*)App->enemies);
 	
 	original_y = y;
 }
