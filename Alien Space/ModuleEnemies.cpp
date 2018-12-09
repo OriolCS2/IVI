@@ -100,7 +100,7 @@ bool ModuleEnemies::CleanUp()
 	return true;
 }
 
-bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y,bool z, int num)
+bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y,int Type, int num)
 {
 	bool ret = false;
 
@@ -111,7 +111,7 @@ bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y,bool z, int num)
 			queue[i].type = type;
 			queue[i].x = x;
 			queue[i].y = y;
-			queue[i].z = z;
+			queue[i].Type = Type;
 			queue[i].num = num;
 			ret = true;
 			break;
@@ -132,7 +132,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		switch (info.type)
 		{
 		case ENEMY_TYPES::VERTICAL_SHIP:
-			enemies[i] = new Enemy_VerticalShip(info.x, info.y);
+			enemies[i] = new Enemy_VerticalShip(info.x, info.y, info.Type);
 			break;
 		}
 	}

@@ -104,15 +104,15 @@ bool j1Scene::Save(pugi::xml_node & scene) const
 void j1Scene::SpawnEnemies()
 {
 
-	App->enemies->AddEnemy(VERTICAL_SHIP, 25, 10);
-	App->enemies->AddEnemy(VERTICAL_SHIP, 76, 10);
-	App->enemies->AddEnemy(VERTICAL_SHIP, 126, 10);
-	App->enemies->AddEnemy(VERTICAL_SHIP, 177, 10); 
-	App->enemies->AddEnemy(VERTICAL_SHIP, 228, 10);
-	App->enemies->AddEnemy(VERTICAL_SHIP, 279, 10);
-	App->enemies->AddEnemy(VERTICAL_SHIP, 330, 10);
-	App->enemies->AddEnemy(VERTICAL_SHIP, 381, 10);
-	App->enemies->AddEnemy(VERTICAL_SHIP, 432, 10);
+	
+	App->enemies->AddEnemy(VERTICAL_SHIP, 76, 10, 2);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 127, 10, 3);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 178, 10, 4); 
+	App->enemies->AddEnemy(VERTICAL_SHIP, 229, 10, 5);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 280, 10, 6);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 331, 10, 7);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 382, 10, 8);
+	
 
 }
 

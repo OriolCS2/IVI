@@ -14,10 +14,18 @@ private:
 	iPoint original_pos;
 	Animation fly;
 	Path path;
-
+	int Type;
+	int Time = 0;
+	int Right = 0;
+	int Left = 0;
+	int Down = 0;
+	bool ToDo1 = true;
+	bool ToDo2 = false;
+	bool ToDo3 = false;
+	bool ToDo4 = false;
 public:
 
-	Enemy_VerticalShip(int x, int y);
+	Enemy_VerticalShip(int x, int y, int Type);
 	void OnCollision(Collider* collider);
 	void Move(float dt);
 };
