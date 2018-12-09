@@ -43,7 +43,7 @@ public:
 
 public:
 
-	
+	SDL_Texture * space = nullptr;
 
 
 };

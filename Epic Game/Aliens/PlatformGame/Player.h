@@ -40,7 +40,14 @@ public:
 
 
 public:
+
 	float DT;
+
+	SDL_Texture* texture = nullptr;
+	iPoint position;
+	Animation* current_animation = nullptr;
+	Animation Idle;
+	int Time = 0;
 };
 
 

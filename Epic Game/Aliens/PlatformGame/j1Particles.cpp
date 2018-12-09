@@ -34,6 +34,15 @@ bool j1Particles::Start()
 {
 	LOG("Loading particles");
 
+	texture = App->tex->Load("textures/shoot.png");
+
+	shoot.anim.PushBack({ 0,0,8,45 });
+	shoot.anim.speed = 0.2f;
+	shoot.anim.loop = true;
+	shoot.speed.y = -500;
+	shoot.speed.x = 0;
+	shoot.life = 3000;
+
 	return true;
 }
 
@@ -42,7 +51,7 @@ bool j1Particles::CleanUp()
 {
 	LOG("Unloading particles");
 
-
+	App->tex->UnLoad(texture);
 	for (uint i = 0; i < MAX_ACTIVE_PARTICLES; ++i)
 	{
 		if (active[i] != nullptr)
@@ -57,14 +66,7 @@ bool j1Particles::CleanUp()
 
 bool j1Particles::Awake(pugi::xml_node& config) 
 {
-	Doublejump.anim = LoadPushbacks(config, "DoubleJump");
-	smokeBottom.anim = LoadPushbacks(config, "smokeBottom");
-	laserL.anim = LoadPushbacks(config, "laserL");
-	laserL.speed.x = config.child("laserL").child("speedX").attribute("value").as_int();
-	laserL.life = config.child("laserL").child("life").attribute("value").as_int();
-	laserR.anim = LoadPushbacks(config, "laserR");
-	laserR.speed.x = config.child("laserR").child("speedX").attribute("value").as_int();
-	laserR.life = config.child("laserR").child("life").attribute("value").as_int();
+	
 	return true;
 }
 
@@ -78,22 +80,19 @@ bool j1Particles::Update(float dt)
 		if (p == nullptr)
 			continue;
 
-				delete p;
-				active[i] = nullptr;
-		
-			
-			if (SDL_GetTicks() >= p->born)
+		if (p->Update() == false)
+		{
+			delete p;
+			active[i] = nullptr;
+		}
+		else if (SDL_GetTicks() >= p->born)
+		{
+			App->render->Blit(texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame(App->entitymanager->GetPlayerData()->DT)));
+			if (p->fx_played == false)
 			{
-				
-					App->render->Blit(App->entitymanager->GetPlayerData()->texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame(App->entitymanager->GetPlayerData()->DT)));
-				
-				if (p->fx_played == false)
-				{
-					p->fx_played = true;
-				}
+				p->fx_played = true;
 			}
-		
-		
+		}
 	}
 
 	return true;
@@ -109,11 +108,8 @@ void j1Particles::AddParticle(const Particle& particle, int x, int y, COLLIDER_T
 			p->born = SDL_GetTicks() + delay;
 			p->position.x = x;
 			p->position.y = y;
-			if (collider_type != COLLIDER_NONE) {
+			if (collider_type != COLLIDER_NONE)
 				p->collider = App->collision->AddCollider(p->anim.GetCurrentFrame(App->entitymanager->GetPlayerData()->DT), collider_type, this);
-
-			}
-				
 			active[i] = p;
 			break;
 		}
@@ -159,8 +155,7 @@ Particle::~Particle()
 bool Particle::Update()
 {
 	bool ret = true;
-	
-	
+
 	if (life > 0)
 	{
 		if ((SDL_GetTicks() - born) > life)
@@ -169,14 +164,9 @@ bool Particle::Update()
 	else
 		if (anim.Finished())
 			ret = false;
-	
-		position.x += (speed.x * App->entitymanager->GetPlayerData()->DT);
-		position.y += (speed.y * App->entitymanager->GetPlayerData()->DT);
-	
-	
-	
 
-
+	position.x += (speed.x * App->entitymanager->GetPlayerData()->DT);
+	position.y += (speed.y * App->entitymanager->GetPlayerData()->DT);
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
@@ -184,21 +174,3 @@ bool Particle::Update()
 	return ret;
 }
 
-Animation j1Particles::LoadPushbacks(pugi::xml_node& config, p2SString NameAnim) const
-{
-	SDL_Rect rect;
-	Animation anim;
-
-	for (pugi::xml_node frames = config.child(NameAnim.GetString()).child("frame"); frames; frames = frames.next_sibling("frame")) {
-		rect.x = frames.attribute("x").as_int();
-		rect.y = frames.attribute("y").as_int();
-		rect.w = frames.attribute("w").as_int();
-		rect.h = frames.attribute("h").as_int();
-		anim.PushBack({ rect.x,rect.y,rect.w,rect.h });
-	}
-	anim.loop = config.child(NameAnim.GetString()).attribute("loop").as_bool();
-	anim.speed = config.child(NameAnim.GetString()).attribute("speed").as_float();
-	
-
-	return anim;
-}

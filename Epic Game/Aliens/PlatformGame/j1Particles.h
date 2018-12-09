@@ -42,7 +42,7 @@ public:
 	void OnCollision(Collider* c1, Collider* c2);
 
 	void AddParticle(const Particle& particle, int x, int y, COLLIDER_TYPE collider_type = COLLIDER_NONE, Uint32 delay = 0);
-	Animation LoadPushbacks(pugi::xml_node & config, p2SString NameAnim) const;
+	
 private:
 
 
@@ -50,15 +50,9 @@ private:
 
 public:
 
-	Particle smokeBottom;
-	Particle laserL;
-	Particle laserR;
-
-	p2SString sprites_name[2];
+	Particle shoot;
 	
-	Animation DoubleJump;
-	Particle Doublejump;
-
+	SDL_Texture* texture;
 };
 
 #endif // __MODULEPARTICLES_H__

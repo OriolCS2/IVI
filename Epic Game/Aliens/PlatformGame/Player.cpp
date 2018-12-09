@@ -40,9 +40,16 @@ bool Player::Start()
 	BROFILER_CATEGORY("Player: Start", Profiler::Color::DarkGreen)
 	bool ret = true;
 	
+	texture = App->tex->Load("textures/ship.png");
+	
+	Idle.PushBack({ 113,5,41,47 });
+	
 
-	
-	
+	position.x = -App->render->camera.x + 200;
+	position.y = -App->render->camera.y + 700;
+
+	current_animation = &Idle;
+
 	return ret;
 }
 bool Player::PreUpdate() //Here we preload the input functions to determine the state of the player
@@ -55,7 +62,22 @@ bool Player::Update(float dt)
 {
 	BROFILER_CATEGORY("Player: Update", Profiler::Color::Green);
 	DT = dt;
+	if (position.x >= -App->render->camera.x + 9) {
+		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) {
+			position.x -= 400 * dt;
+		}
+	}
+	if (position.x <= -App->render->camera.x + App->render->camera.w - 49) {
+		if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) {
+			position.x += 400 * dt;
+		}
+	}
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && SDL_GetTicks() - Time >= 250) {
+		Time = SDL_GetTicks();
+		App->particles->AddParticle(App->particles->shoot, position.x + 16, position.y - 45, COLLIDER_PARTICLE);
+	}
 
+	App->render->Blit(texture, position.x, position.y, &current_animation->GetCurrentFrame(dt));
 
 	return true;
 }
@@ -70,7 +92,7 @@ bool Player::Load(pugi::xml_node& player)
 {
 	
 
-
+	
 
 	return true;
 }
@@ -82,7 +104,7 @@ bool Player::Save(pugi::xml_node& player) const
 
 bool Player::CleanUp()
 {
-	
+	App->tex->UnLoad(texture);
 	return true;
 }
 

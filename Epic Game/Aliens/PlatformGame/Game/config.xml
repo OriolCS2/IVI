@@ -1,7 +1,7 @@
 <!-- Config file for the game -->
 
 <config>
-  <app framerate_cap="30">
+  <app framerate_cap="60">
     <title>Aliens</title>
     <organization>UPC</organization>
   </app>
@@ -11,7 +11,7 @@
   </renderer>
 
   <window>
-    <resolution width="1024" height="768" scale="1"/>
+    <resolution width="500" height="768" scale="1"/>
     <fullscreen value="false"/>
     <borderless value="false"/>
     <resizable value="false"/>
@@ -39,12 +39,7 @@
     <IntroFx>audio/fx/Intro.wav</IntroFx>
     <MinY_ChooseRect value="228"></MinY_ChooseRect>
     <MaxY_ChooseRect value="671"></MaxY_ChooseRect>
-    <MinX_RectChoosePlayer1 value="138"></MinX_RectChoosePlayer1>
-    <MaxX_RectChoosePlayer1 value="363"></MaxX_RectChoosePlayer1>
-    <MinX_RectChoosePlayer2 value="388"></MinX_RectChoosePlayer2>
-    <MaxX_RectChoosePlayer2 value="613"></MaxX_RectChoosePlayer2>
-    <MinX_RectChoosePlayer3 value="638"></MinX_RectChoosePlayer3>
-    <MaxX_RectChoosePlayer3 value="863"></MaxX_RectChoosePlayer3>
+
     <PlayerNumber1 value="0"></PlayerNumber1>
     <PlayerNumber2 value="1"></PlayerNumber2>
     <PlayerNumber3 value="2"></PlayerNumber3>

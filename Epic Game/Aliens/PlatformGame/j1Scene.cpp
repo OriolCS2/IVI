@@ -43,7 +43,7 @@ bool j1Scene::Awake(pugi::xml_node& config)
 bool j1Scene::Start()
 {
 	BROFILER_CATEGORY("Scene: Start", Profiler::Color::LightYellow);
-
+	space = App->tex->Load("textures/space.png");
 	
 	return true;
 }
@@ -60,6 +60,8 @@ bool j1Scene::Update(float dt)
 {
 	BROFILER_CATEGORY("Scene: Update", Profiler::Color::LightYellow);
 	
+	App->render->Blit(space, 0, 0, NULL);
+
 	return true;
 }
 
@@ -76,7 +78,7 @@ bool j1Scene::PostUpdate()
 // Called before quitting
 bool j1Scene::CleanUp()
 {
-
+	App->tex->UnLoad(space);
 	LOG("Freeing scene");
 	return true;
 }
