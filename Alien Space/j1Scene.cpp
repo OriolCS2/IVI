@@ -105,13 +105,22 @@ void j1Scene::SpawnEnemies()
 {
 
 	
-	App->enemies->AddEnemy(VERTICAL_SHIP, 76, 10, 2);
-	App->enemies->AddEnemy(VERTICAL_SHIP, 127, 10, 3);
-	App->enemies->AddEnemy(VERTICAL_SHIP, 178, 10, 4); 
-	App->enemies->AddEnemy(VERTICAL_SHIP, 229, 10, 5);
-	App->enemies->AddEnemy(VERTICAL_SHIP, 280, 10, 6);
-	App->enemies->AddEnemy(VERTICAL_SHIP, 331, 10, 7);
-	App->enemies->AddEnemy(VERTICAL_SHIP, 382, 10, 8);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 81, -30, 2);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 131, -30, 3);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 182, -30, 4);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 233, -30, 5);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 284, -30, 6);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 335, -30, 7);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 386, -30, 8);
+
+	App->enemies->AddEnemy(VERTICAL_SHIP, 81, -350, 2);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 131, -350, 3);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 182, -350, 4);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 233, -350, 5);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 284, -350, 6);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 335, -350, 7);
+	App->enemies->AddEnemy(VERTICAL_SHIP, 386, -350, 8);
+
 	
 
 }

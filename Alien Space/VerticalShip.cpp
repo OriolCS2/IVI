@@ -26,41 +26,40 @@ Enemy_VerticalShip::Enemy_VerticalShip(int x, int y, int Type) : Enemy(x, y)
 	original_pos.x = x;
 	original_pos.y = y;
 	original_y = y;
-
+	Down = -20;
 	if (Type == 2) {
-		Right = 127;
-		Left = 20;
-		Down = 70;
+		Right = 131;
+		Left = 24;
+
 	}
 	if (Type == 3) {
-		Right = 178;
-		Left = 71;
-		Down = 70;
+		Right = 182;
+		Left = 75;
 	}
 	if (Type == 4) {
-		Right = 229;
-		Left = 122;
-		Down = 70;
+		Right = 233;
+		Left = 126;
+
 	}
 	if (Type == 5) {
-		Right = 280;
-		Left = 173;
-		Down = 70;
+		Right = 284;
+		Left = 177;
+
 	}
 	if (Type == 6) {
-		Right = 331;
-		Left = 224;
-		Down = 70;
+		Right = 335;
+		Left = 228;
+
 	}
 	if (Type == 7) {
-		Right = 382;
-		Left = 275;
-		Down = 70;
+		Right = 386;
+		Left = 279;
+
 	}
 	if (Type == 8) {
-		Right = 433;
-		Left = 326;
-		Down = 70;
+		Right = 437;
+		Left = 330;
+
 	}
 	
 }
