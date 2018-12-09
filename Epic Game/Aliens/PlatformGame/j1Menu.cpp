@@ -131,9 +131,8 @@ bool j1Menu::PostUpdate()
 	}
 	if (GoStart) {
 		if (App->fade->current_step==App->fade->fade_from_black) {
+			App->ui_manager->DeleteAllUI();
 			GoStart = false;
-			InMainMenu = true;
-			StartChoosing = false;
 			App->scene->active = !App->scene->active;
 			App->collision->active = !App->collision->active;
 			App->entitymanager->ActiveGame = true;
@@ -208,12 +207,10 @@ void j1Menu::CreateMainMenu()
 void j1Menu::MainMenu()
 {
 	if (buttonSTART->pressed) {
+		App->fade->FadeToBlack(3.0f);
 		WantToDisappearMainMenu(true);
-		//buttonJEFF->pressed = false;
-		//buttonJANE->pressed = false;
-		//buttonJERRY->pressed = false;
 		InMainMenu = false;
-		StartChoosing = true;
+		GoStart = true;
 	}
 	if (buttonSETTINGS->pressed) {
 		SettingMenuDone = false;
