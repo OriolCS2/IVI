@@ -43,10 +43,8 @@ bool Player::Start()
 	texture = App->tex->Load("textures/ship.png");
 	
 	Idle.PushBack({ 113,5,41,47 });
-	
 
-	position.x = -App->render->camera.x + 200;
-	position.y = -App->render->camera.y + 700;
+	StartPosition();
 
 	current_animation = &Idle;
 
@@ -62,20 +60,8 @@ bool Player::Update(float dt)
 {
 	BROFILER_CATEGORY("Player: Update", Profiler::Color::Green);
 	DT = dt;
-	if (position.x >= -App->render->camera.x + 9) {
-		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) {
-			position.x -= 400 * dt;
-		}
-	}
-	if (position.x <= -App->render->camera.x + App->render->camera.w - 49) {
-		if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) {
-			position.x += 400 * dt;
-		}
-	}
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && SDL_GetTicks() - Time >= 250) {
-		Time = SDL_GetTicks();
-		App->particles->AddParticle(App->particles->shoot, position.x + 16, position.y - 45, COLLIDER_PARTICLE);
-	}
+
+	Controls();
 
 	App->render->Blit(texture, position.x, position.y, &current_animation->GetCurrentFrame(dt));
 
@@ -113,4 +99,26 @@ void Player::OnCollision(Collider * c2) //this determine what happens when the p
 	
 }
 
+void Player::Controls()
+{
+	if (position.x >= -App->render->camera.x + 9) {
+		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) {
+			position.x -= 400 * DT;
+		}
+	}
+	if (position.x <= -App->render->camera.x + App->render->camera.w - 49) {
+		if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) {
+			position.x += 400 * DT;
+		}
+	}
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && SDL_GetTicks() - Time >= 250) {
+		Time = SDL_GetTicks();
+		App->particles->AddParticle(App->particles->shoot, position.x + 16, position.y - 45, COLLIDER_PARTICLE);
+	}
+}
 
+void Player::StartPosition()
+{
+	position.x = -App->render->camera.x + 200;
+	position.y = -App->render->camera.y + 700;
+}

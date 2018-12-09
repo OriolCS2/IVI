@@ -189,6 +189,10 @@ bool j1App::Update()
 		App->capactivated = !App->capactivated;
 	}
 
+	if (App->input->GetKey(SDL_SCANCODE_ESCAPE) == KEY_DOWN) {
+		return false;
+	}
+
 	FinishUpdate();
 	return ret;
 }

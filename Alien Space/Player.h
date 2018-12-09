@@ -38,6 +38,8 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c2);
 
+	void Controls();
+	void StartPosition();
 
 public:
 
