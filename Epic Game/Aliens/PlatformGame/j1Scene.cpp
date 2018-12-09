@@ -14,6 +14,7 @@
 #include "EntityManager.h"
 #include "j1Collision.h"
 #include "j1Menu.h"
+#include "ModuleEnemies.h"
 #include "j1FadeToBlack.h"
 
 #include "Brofiler/Brofiler.h"
@@ -96,6 +97,13 @@ bool j1Scene::Save(pugi::xml_node & scene) const
 
 
 	return true;
+}
+
+void j1Scene::SpawnEnemies()
+{
+
+	App->enemies->AddEnemy(VERTICAL_SHIP, 300, 300);
+
 }
 
 

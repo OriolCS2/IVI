@@ -50,6 +50,8 @@ bool Player::Start()
 
 	current_animation = &Idle;
 
+	
+
 	return ret;
 }
 bool Player::PreUpdate() //Here we preload the input functions to determine the state of the player
@@ -78,7 +80,9 @@ bool Player::Update(float dt)
 	}
 
 	App->render->Blit(texture, position.x, position.y, &current_animation->GetCurrentFrame(dt));
-
+	if (coll == nullptr) 
+		coll = App->collision->AddCollider({ position.x,position.y,41,47 }, COLLIDER_PLAYER, (j1Module*)App->entitymanager);
+	coll->SetPos(position.x, position.y);
 	return true;
 }
 

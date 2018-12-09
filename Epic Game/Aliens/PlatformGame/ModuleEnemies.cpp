@@ -28,7 +28,7 @@ ModuleEnemies::~ModuleEnemies()
 bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
-	sprites = App->tex->Load("assets/enemies/enemies.png");
+	sprites = App->tex->Load("textures/starshipdark.png");
 
 
 	return true;

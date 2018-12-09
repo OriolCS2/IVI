@@ -43,6 +43,8 @@ public:
 
 	float DT;
 
+	Collider* coll = nullptr;
+
 	SDL_Texture* texture = nullptr;
 	iPoint position;
 	Animation* current_animation = nullptr;

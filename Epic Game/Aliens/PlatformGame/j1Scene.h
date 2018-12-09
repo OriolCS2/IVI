@@ -38,7 +38,7 @@ public:
 	bool Save(pugi::xml_node&) const;
 
 
-
+	void SpawnEnemies();
 
 
 public:
