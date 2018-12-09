@@ -21,6 +21,7 @@ class j1Particles;
 class UI_Manager;
 class j1FadeToBlack;
 class j1Fonts;
+class ModuleEnemies;
 
 class j1App
 {
@@ -101,6 +102,7 @@ public:
 	UI_Manager*			ui_manager;
 	j1FadeToBlack*		fade;
 	j1Fonts*			fonts;
+	ModuleEnemies*		enemies;
 
 	bool CanLoad;
 

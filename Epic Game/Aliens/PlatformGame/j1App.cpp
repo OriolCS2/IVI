@@ -19,6 +19,7 @@
 #include "j1FadeToBlack.h"
 #include "j1Fonts.h"
 #include "p2Point.h"
+#include "ModuleEnemies.h"
 
 #include "Brofiler/Brofiler.h"
 
@@ -40,6 +41,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	ui_manager = new UI_Manager();
 	fade = new j1FadeToBlack();
 	fonts = new j1Fonts();
+	enemies = new ModuleEnemies();
 
 	// Ordered for awake / Start / Update
 	// Reverse order of CleanUp
@@ -59,6 +61,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	
 
 	AddModule(particles);
+	AddModule(enemies);
 	AddModule(entitymanager);
 	AddModule(ui_manager);
 	AddModule(menu);

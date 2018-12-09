@@ -82,6 +82,7 @@
   <ItemGroup>
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CheckBox.cpp" />
+    <ClCompile Include="Enemy.cpp" />
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="EntityManager.cpp" />
     <ClCompile Include="Image.cpp" />
@@ -98,6 +99,7 @@
     <ClCompile Include="j1Scene.cpp" />
     <ClCompile Include="j1Timer.cpp" />
     <ClCompile Include="Label.cpp" />
+    <ClCompile Include="ModuleEnemies.cpp" />
     <ClCompile Include="p2Log.cpp" />
     <ClCompile Include="j1Render.cpp" />
     <ClCompile Include="j1Textures.cpp" />
@@ -107,10 +109,12 @@
     <ClCompile Include="Slider.cpp" />
     <ClCompile Include="UI_Element.cpp" />
     <ClCompile Include="UI_Manager.cpp" />
+    <ClCompile Include="VerticalShip.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
     <ClInclude Include="CheckBox.h" />
+    <ClInclude Include="Enemy.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="EntityManager.h" />
     <ClInclude Include="Image.h" />
@@ -123,6 +127,7 @@
     <ClInclude Include="j1Scene.h" />
     <ClInclude Include="j1Timer.h" />
     <ClInclude Include="Label.h" />
+    <ClInclude Include="ModuleEnemies.h" />
     <ClInclude Include="p2Animation.h" />
     <ClInclude Include="j1Audio.h" />
     <ClInclude Include="j1Input.h" />
@@ -143,6 +148,7 @@
     <ClInclude Include="Slider.h" />
     <ClInclude Include="UI_Element.h" />
     <ClInclude Include="UI_Manager.h" />
+    <ClInclude Include="VerticalShip.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Game\config.xml">

@@ -82,6 +82,15 @@
     <ClCompile Include="j1Menu.cpp">
       <Filter>Modules</Filter>
     </ClCompile>
+    <ClCompile Include="Enemy.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
+    <ClCompile Include="ModuleEnemies.cpp">
+      <Filter>Modules</Filter>
+    </ClCompile>
+    <ClCompile Include="VerticalShip.cpp">
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="PugiXml\src\pugixml.hpp">
@@ -186,6 +195,15 @@
     <ClInclude Include="j1Menu.h">
       <Filter>Modules</Filter>
     </ClInclude>
+    <ClInclude Include="Enemy.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
+    <ClInclude Include="ModuleEnemies.h">
+      <Filter>Modules</Filter>
+    </ClInclude>
+    <ClInclude Include="VerticalShip.h">
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Game\config.xml">
@@ -213,6 +231,9 @@
     </Filter>
     <Filter Include="Modules\UI">
       <UniqueIdentifier>{39673bcc-2fe1-4baf-abcc-12bede5af88e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Modules\Enemies">
+      <UniqueIdentifier>{0cad65a5-735b-44f5-a2f2-97b05cd4bce8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>
