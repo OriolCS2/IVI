@@ -43,6 +43,13 @@ bool j1Particles::Start()
 	shoot.speed.x = 0;
 	shoot.life = 3000;
 
+	enemyshoot.anim.PushBack({ 9,0,8,45 });
+	enemyshoot.anim.speed = 0.2f;
+	enemyshoot.anim.loop = true;
+	enemyshoot.speed.y = 500;
+	enemyshoot.speed.x = 0;
+	enemyshoot.life = 3000;
+
 	return true;
 }
 
@@ -109,7 +116,7 @@ void j1Particles::AddParticle(const Particle& particle, int x, int y, COLLIDER_T
 			p->position.x = x;
 			p->position.y = y;
 			if (collider_type != COLLIDER_NONE)
-				p->collider = App->collision->AddCollider({-100,0,8,38}, collider_type, this);
+				p->collider = App->collision->AddCollider({-100,50,8,38}, collider_type, this);
 			active[i] = p;
 			break;
 		}
@@ -170,6 +177,10 @@ bool Particle::Update()
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);
+
+	if (position.y <= -App->render->camera.y) {
+		ret = false;
+	}
 
 	return ret;
 }

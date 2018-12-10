@@ -100,7 +100,14 @@ bool Player::CleanUp()
 
 void Player::OnCollision(Collider * c2) //this determine what happens when the player touch a type of collider
 {
-	
+	if (c2->type == COLLIDER_ENEMY_SPIDER) {
+		App->scene->active = false;
+		App->entitymanager->active = false;
+		App->collision->active = false;
+		App->menu->start = true;
+		App->menu->GameOn = false;
+		App->menu->Start();
+	}
 }
 
 void Player::Controls()

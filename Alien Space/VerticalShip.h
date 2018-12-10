@@ -25,9 +25,12 @@ private:
 	bool ToDo4 = false;
 	bool ToDo5 = false;
 	bool ToDo6 = false;
+	int ShootTime;
+	int time;
+	int shoot;
 public:
 
-	Enemy_VerticalShip(int x, int y, int Type);
+	Enemy_VerticalShip(int x, int y, int Type, int shoot);
 	void OnCollision(Collider* collider);
 	void Move(float dt);
 };

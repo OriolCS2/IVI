@@ -132,7 +132,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		switch (info.type)
 		{
 		case ENEMY_TYPES::VERTICAL_SHIP:
-			enemies[i] = new Enemy_VerticalShip(info.x, info.y, info.Type);
+			enemies[i] = new Enemy_VerticalShip(info.x, info.y, info.Type, info.num);
 			break;
 		}
 	}

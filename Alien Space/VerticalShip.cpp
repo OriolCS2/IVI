@@ -12,13 +12,32 @@
 
 
 
-Enemy_VerticalShip::Enemy_VerticalShip(int x, int y, int Type) : Enemy(x, y)
+Enemy_VerticalShip::Enemy_VerticalShip(int x, int y, int Type, int shoot) : Enemy(x, y)
 {
 	type = VERTICAL_SHIP;
 	this->Type = Type;
 	fly.PushBack({ 0, 0, 41, 41 }); // 1
 
-	
+
+	switch (shoot) {
+	case 2: shoot = 900;
+		break;
+	case 3: shoot = 1100;
+		break;
+	case 4: shoot = 600;
+		break;
+	case 5: shoot = 400;
+		break;
+	case 6: shoot = 500;
+		break;
+	case 7: shoot = 1200;
+		break;
+	case 8: shoot = 980;
+		break;
+	}
+
+
+	ShootTime = 2000;
 
 	animation = &fly;
 
@@ -61,12 +80,20 @@ Enemy_VerticalShip::Enemy_VerticalShip(int x, int y, int Type) : Enemy(x, y)
 		Left = 330;
 
 	}
-	
+	this->shoot = shoot;
+	time = SDL_GetTicks();
 }
 
 void Enemy_VerticalShip::Move(float dt)
 {
 	
+	if (SDL_GetTicks() - time >= ShootTime + shoot) {
+		time = SDL_GetTicks();
+		App->particles->AddParticle(App->particles->enemyshoot, position.x + 16, position.y + 20, COLLIDER_ENEMY_SPIDER);
+	}
+
+
+
 		if (ToDo1) { //va dreta
 			if (position.x <= Right) {
 				position.x += 120 * dt;
