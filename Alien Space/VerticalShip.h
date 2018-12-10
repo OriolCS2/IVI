@@ -23,6 +23,8 @@ private:
 	bool ToDo2 = false;
 	bool ToDo3 = false;
 	bool ToDo4 = false;
+	bool ToDo5 = false;
+	bool ToDo6 = false;
 public:
 
 	Enemy_VerticalShip(int x, int y, int Type);

@@ -26,7 +26,7 @@ Enemy_VerticalShip::Enemy_VerticalShip(int x, int y, int Type) : Enemy(x, y)
 	original_pos.x = x;
 	original_pos.y = y;
 	original_y = y;
-	Down = -20;
+	Down = position.y + 60;
 	if (Type == 2) {
 		Right = 131;
 		Left = 24;
@@ -67,7 +67,7 @@ Enemy_VerticalShip::Enemy_VerticalShip(int x, int y, int Type) : Enemy(x, y)
 void Enemy_VerticalShip::Move(float dt)
 {
 	
-		if (ToDo1) {
+		if (ToDo1) { //va dreta
 			if (position.x <= Right) {
 				position.x += 120 * dt;
 			}
@@ -76,29 +76,36 @@ void Enemy_VerticalShip::Move(float dt)
 				ToDo2 = true;
 			}
 		}
-		if (ToDo2) {
-			if (position.x >= Left) {
-				position.x -= 100 * dt;
+		if (ToDo2) { //baixa
+			if (position.y <= Down) {
+				position.y += 100 * dt;
 			}
 			else {
+				Down += 50;
 				ToDo2 = false;
 				ToDo3 = true;
 			}
 		}
-		if (ToDo3) {
-			if (position.y <= Down) {
-				position.y += 100 * dt;
+		if (ToDo3) { //va esquerre
+			if (position.x >= Left) {
+				position.x -= 100 * dt;
 			}
 			else {
 				ToDo3 = false;
 				ToDo4 = true;
 			}
 		}
-		if (ToDo4) {
-			Down += 50;
-			ToDo4 = false;
-			ToDo1 = true;
+		if (ToDo4) { //baixa
+			if (position.y <= Down) {
+				position.y += 100 * dt;
+			}
+			else {
+				Down += 50;
+				ToDo4 = false;
+				ToDo1 = true;
+			}
 		}
+
 }
 
 void Enemy_VerticalShip::OnCollision(Collider* collider) {
