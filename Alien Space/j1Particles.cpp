@@ -43,6 +43,13 @@ bool j1Particles::Start()
 	shoot.speed.x = 0;
 	shoot.life = 3000;
 
+	shoot2.anim.PushBack({ 0,0,8,45 });
+	shoot2.anim.speed = 0.2f;
+	shoot2.anim.loop = true;
+	shoot2.speed.y = 500;
+	shoot2.speed.x = 0;
+	shoot2.life = 3000;
+
 	enemyshoot.anim.PushBack({ 9,0,8,45 });
 	enemyshoot.anim.speed = 0.2f;
 	enemyshoot.anim.loop = true;

@@ -52,6 +52,7 @@ public:
 	Animation* current_animation = nullptr;
 	Animation Idle;
 	int Time = 0;
+	int Time2 = 0;
 	int EnemiesKilled = 0;
 	int XML_enemieskilled = -10;
 	int ShootNum = 0; 

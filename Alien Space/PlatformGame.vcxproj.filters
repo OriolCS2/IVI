@@ -203,6 +203,9 @@
     <Xml Include="Game\save_game.xml">
       <Filter>Pugui XML</Filter>
     </Xml>
+    <Xml Include="Game\Estadisticas.xml">
+      <Filter>Modules</Filter>
+    </Xml>
   </ItemGroup>
   <ItemGroup>
     <Filter Include="Pugui XML">

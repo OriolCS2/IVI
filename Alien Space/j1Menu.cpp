@@ -111,12 +111,7 @@ bool j1Menu::Update(float dt)
 				MainMenu();
 		}
 	}
-	if (App->input->GetKey(SDL_SCANCODE_J) == KEY_REPEAT) {
-		App->render->camera.y -= 10;
-	}
-	if (App->input->GetKey(SDL_SCANCODE_K) == KEY_REPEAT) {
-		App->render->camera.y += 10;
-	}
+
 	return true;
 }
 

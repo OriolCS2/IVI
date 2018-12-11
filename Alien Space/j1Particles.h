@@ -51,6 +51,7 @@ private:
 public:
 
 	Particle shoot;
+	Particle shoot2;
 	Particle enemyshoot;
 	
 	SDL_Texture* texture;

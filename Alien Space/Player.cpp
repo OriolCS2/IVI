@@ -132,15 +132,20 @@ void Player::Controls()
 			position.x += 400 * DT;
 		}
 	}
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && SDL_GetTicks() - Time >= 200) {
+	if (App->input->GetKey(SDL_SCANCODE_J) == KEY_DOWN && SDL_GetTicks() - Time >= 200) {
 		ShootNum++;
 		Time = SDL_GetTicks();
 		App->particles->AddParticle(App->particles->shoot, position.x + 16, position.y - 45, COLLIDER_PARTICLE);
+	}
+	if (App->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN && SDL_GetTicks() - Time2 >= 200) {
+		ShootNum++;
+		Time2 = SDL_GetTicks();
+		App->particles->AddParticle(App->particles->shoot2, position.x + 16, position.y, COLLIDER_PARTICLE);
 	}
 }
 
 void Player::StartPosition()
 {
 	position.x = -App->render->camera.x + 200;
-	position.y = -App->render->camera.y + 700;
+	position.y = -App->render->camera.y + 350;
 }
