@@ -75,7 +75,7 @@ bool j1Menu::Start()
 	CreateSettingsButtons();
 	CreateIntro();
 	WantToDisappearMainMenu(true);
-	
+	App->player->EnemiesKilled = 0;
 	return true;
 }
 
@@ -91,6 +91,8 @@ bool j1Menu::PreUpdate()
 		App->ui_manager->DeleteUI_Element(Title);
 		App->ui_manager->DeleteUI_Element(sentence);
 		WantToDisappearMainMenu(false);
+		buttonSETTINGS->NoUse = true;
+		buttonSETTINGS->WantToRender = false;
 		//CreateMainMenuButtons();
 		//CreateButtons();
 	}
@@ -133,7 +135,7 @@ bool j1Menu::PostUpdate()
 			App->scene->active = true;
 			App->collision->active = true;
 			GoStart = false;
-			App->scene->SpawnEnemies();
+			App->scene->SpawnEnemies(1);
 			App->player->Start();
 
 			GameOn = true;
@@ -198,9 +200,9 @@ void j1Menu::CreateMainMenu()
 	MainTitle = App->ui_manager->CreateImage((App->win->width / 2) - (844 / 2), 70, false);
 	MainTitle->SetSpritesData({ 401,784,844	,165 });
 	MainTitle->type = BUTTON;
-	buttonSTART = App->ui_manager->CreateButton(400, 270, 1, nullptr, "START", 30);
-	buttonSETTINGS = App->ui_manager->CreateButton(400, 430, 1, nullptr, "SETTINGS", 30);
-	buttonEXIT = App->ui_manager->CreateButton(400, 670, 1, nullptr, "EXIT", 30);
+	buttonSTART = App->ui_manager->CreateButton(160, 370, 1, nullptr, "START", 30);
+	buttonSETTINGS = App->ui_manager->CreateButton(160, 470, 1, nullptr, "SETTINGS", 30);
+	buttonEXIT = App->ui_manager->CreateButton(160, 570, 1, nullptr, "EXIT", 30);
 }
 
 void j1Menu::MainMenu()

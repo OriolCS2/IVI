@@ -206,21 +206,4 @@ bool j1Audio::PlayFx(unsigned int id, int repeat)
 	return ret;
 }
 
-bool j1Audio::Load(pugi::xml_node & node)
-{
-	volume = node.child("volume").attribute("value").as_int();
-	general = node.child("general").attribute("value").as_int();
-	fxvolume = node.child("fxvolume").attribute("value").as_int();
 
-	return true;
-}
-
-bool j1Audio::Save(pugi::xml_node & node) const
-{
-
-	node.append_child("volume").append_attribute("value") = volume;
-	node.append_child("fxvolume").append_attribute("value") = fxvolume;
-	node.append_child("general").append_attribute("value") = general;
-
-	return true;
-}

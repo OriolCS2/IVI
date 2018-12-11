@@ -38,13 +38,14 @@ public:
 	bool Save(pugi::xml_node&) const;
 
 
-	void SpawnEnemies();
+	void SpawnEnemies(int Round);
 
 
 public:
 
 	SDL_Texture * space = nullptr;
-
+	bool SpawnRound2 = false;
+	bool SpawnRound3 = false;
 
 };
 

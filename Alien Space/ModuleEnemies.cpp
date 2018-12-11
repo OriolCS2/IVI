@@ -6,7 +6,7 @@
 #include "j1Textures.h"
 #include "Enemy.h"
 #include "j1Window.h"
-
+#include "Player.h"
 #include "VerticalShip.h"
 
 
@@ -166,6 +166,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				enemies[i] = nullptr;
 				break;
 			case VERTICAL_SHIP:
+				App->player->EnemiesKilled++;
 				enemies[i]->OnCollision(c2);
 				delete enemies[i];
 				enemies[i] = nullptr;

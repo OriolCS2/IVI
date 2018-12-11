@@ -34,8 +34,6 @@ public:
 	// Play a previously loaded WAV
 	bool PlayFx(unsigned int fx, int repeat = 0);
 
-	bool Load(pugi::xml_node&);
-	bool Save(pugi::xml_node&) const;
 
 	bool NoAudio = false;
 	int volume = 0;

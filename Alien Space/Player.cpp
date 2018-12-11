@@ -21,7 +21,7 @@
 
 Player::Player() : j1Module()
 {
-
+	name.create("ESTADISTICAS_DEL_JUGADOR");
 }
 
 Player::~Player() {}
@@ -89,6 +89,8 @@ bool Player::Load(pugi::xml_node& player)
 bool Player::Save(pugi::xml_node& player) const
 {
 	
+	player.append_child("Enemigos_Asesinados").append_attribute("value") = XML_enemieskilled;
+	player.append_child("Numero_de_Disparos").append_attribute("value") = XML_ShootNum;
 	return true;
 }
 
@@ -100,6 +102,10 @@ bool Player::CleanUp()
 
 void Player::OnCollision(Collider* c1, Collider* c2) //this determine what happens when the player touch a type of collider
 {
+	XML_enemieskilled = EnemiesKilled;
+	XML_ShootNum = ShootNum;
+	App->SaveGame("Estadisticas.xml");
+	
 	App->enemies->DeleteEnemies();
 	App->menu->InMainMenu = true;
 	App->menu->GoStart = false;
@@ -109,6 +115,7 @@ void Player::OnCollision(Collider* c1, Collider* c2) //this determine what happe
 	App->menu->start = true;
 	App->menu->GameOn = false;
 	App->menu->Start();
+	ShootNum = 0;
 	
 }
 
@@ -125,7 +132,8 @@ void Player::Controls()
 			position.x += 400 * DT;
 		}
 	}
-	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && SDL_GetTicks() - Time >= 250) {
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && SDL_GetTicks() - Time >= 200) {
+		ShootNum++;
 		Time = SDL_GetTicks();
 		App->particles->AddParticle(App->particles->shoot, position.x + 16, position.y - 45, COLLIDER_PARTICLE);
 	}
