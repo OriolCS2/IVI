@@ -10,9 +10,7 @@
 #include "j1Menu.h"
 #include "Player.h"
 #include "j1Collision.h"
-#include "Entity.h"
 #include "j1FadeToBlack.h"
-#include "EntityManager.h"
 #include "Button.h"
 #include "UI_Element.h"
 #include "Image.h"
@@ -132,12 +130,11 @@ bool j1Menu::PostUpdate()
 	if (GoStart) {
 		if (App->fade->current_step==App->fade->fade_from_black) {
 			App->ui_manager->DeleteAllUI();
+			App->scene->active = true;
+			App->collision->active = true;
 			GoStart = false;
-			App->scene->active = !App->scene->active;
-			App->collision->active = !App->collision->active;
-			App->entitymanager->ActiveGame = true;
 			App->scene->SpawnEnemies();
-			App->entitymanager->GetPlayerData()->Start();
+			App->player->Start();
 
 			GameOn = true;
 		}

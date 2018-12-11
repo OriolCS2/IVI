@@ -3,11 +3,11 @@
 
 #include "p2Animation.h"
 #include "p2Point.h"
-#include "Entity.h"
+#include "j1Module.h"
 
 class UI_Element;
 
-class Player : public Entity
+class Player : public j1Module
 {
 	
 public:
@@ -36,7 +36,7 @@ public:
 	bool Load(pugi::xml_node&);
 	bool Save(pugi::xml_node&) const;
 	bool CleanUp();
-	void OnCollision(Collider* c2);
+	void OnCollision(Collider* c1, Collider* c2);
 
 	void Controls();
 	void StartPosition();

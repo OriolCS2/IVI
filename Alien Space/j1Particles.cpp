@@ -11,7 +11,7 @@
 #include "j1Collision.h"
 #include "PugiXml\src\pugiconfig.hpp"
 #include "PugiXml\src\pugixml.hpp"
-#include "EntityManager.h"
+
 
 #define MARGIN 20
 
@@ -94,7 +94,7 @@ bool j1Particles::Update(float dt)
 		}
 		else if (SDL_GetTicks() >= p->born)
 		{
-			App->render->Blit(texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame(App->entitymanager->GetPlayerData()->DT)));
+			App->render->Blit(texture, p->position.x, p->position.y, &(p->anim.GetCurrentFrame(App->player->DT)));
 			if (p->fx_played == false)
 			{
 				p->fx_played = true;
@@ -172,8 +172,8 @@ bool Particle::Update()
 		if (anim.Finished())
 			ret = false;
 
-	position.x += (speed.x * App->entitymanager->GetPlayerData()->DT);
-	position.y += (speed.y * App->entitymanager->GetPlayerData()->DT);
+	position.x += (speed.x * App->player->DT);
+	position.y += (speed.y * App->player->DT);
 
 	if (collider != nullptr)
 		collider->SetPos(position.x, position.y);

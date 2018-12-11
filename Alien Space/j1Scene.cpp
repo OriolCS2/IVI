@@ -10,8 +10,6 @@
 #include "UI_Element.h"
 #include "j1Scene.h"
 #include "Player.h"
-#include "Entity.h"
-#include "EntityManager.h"
 #include "j1Collision.h"
 #include "j1Menu.h"
 #include "ModuleEnemies.h"

@@ -21,6 +21,7 @@ class j1Particles;
 class UI_Manager;
 class j1FadeToBlack;
 class j1Fonts;
+class Player;
 class ModuleEnemies;
 
 class j1App
@@ -96,7 +97,7 @@ public:
 	j1Audio*			audio;
 	j1Scene*			scene;
 	j1Collision*		collision;
-	EntityManager*		entitymanager;
+	Player*				player;
 	j1Menu*				menu;
 	j1Particles*		particles;
 	UI_Manager*			ui_manager;

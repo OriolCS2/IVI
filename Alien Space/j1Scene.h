@@ -2,7 +2,7 @@
 #define __j1SCENE_H__
 
 #include "j1Module.h"
-#include "Entity.h"
+
 
 struct SDL_Texture;
 class UI_Element;

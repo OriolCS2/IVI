@@ -40,12 +40,6 @@
     <ClCompile Include="j1Timer.cpp">
       <Filter>Modules\timer</Filter>
     </ClCompile>
-    <ClCompile Include="EntityManager.cpp">
-      <Filter>Modules</Filter>
-    </ClCompile>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Modules\Entities</Filter>
-    </ClCompile>
     <ClCompile Include="Player.cpp">
       <Filter>Modules\Entities</Filter>
     </ClCompile>
@@ -149,12 +143,6 @@
     </ClInclude>
     <ClInclude Include="j1Timer.h">
       <Filter>Modules\timer</Filter>
-    </ClInclude>
-    <ClInclude Include="EntityManager.h">
-      <Filter>Modules</Filter>
-    </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Modules\Entities</Filter>
     </ClInclude>
     <ClInclude Include="Player.h">
       <Filter>Modules\Entities</Filter>

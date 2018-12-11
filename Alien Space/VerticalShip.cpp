@@ -6,7 +6,7 @@
 #include "path.h"
 #include "j1Render.h"
 #include "Player.h"
-#include "EntityManager.h"
+
 
 #include <math.h>  
 

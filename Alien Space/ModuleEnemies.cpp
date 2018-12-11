@@ -99,6 +99,20 @@ bool ModuleEnemies::CleanUp()
 
 	return true;
 }
+bool ModuleEnemies::DeleteEnemies()
+{
+
+	for (uint i = 0; i < MAX_ENEMIES; ++i)
+	{
+		if (enemies[i] != nullptr)
+		{
+			delete enemies[i];
+			enemies[i] = nullptr;
+		}
+	}
+
+	return true;
+}
 
 bool ModuleEnemies::AddEnemy(ENEMY_TYPES type, int x, int y,int Type, int num)
 {

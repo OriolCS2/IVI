@@ -11,7 +11,7 @@
 #include "j1Audio.h"
 #include "j1Scene.h"
 #include "j1App.h"
-#include "EntityManager.h"
+#include "Player.h"
 #include "j1Collision.h"
 #include "j1Menu.h"
 #include "j1Particles.h"
@@ -35,7 +35,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 	audio = new j1Audio();
 	scene = new j1Scene();
 	collision = new j1Collision();
-	entitymanager = new EntityManager();
+	player = new Player();
 	menu = new j1Menu();
 	particles = new j1Particles();
 	ui_manager = new UI_Manager();
@@ -62,7 +62,7 @@ j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 
 	AddModule(particles);
 	AddModule(enemies);
-	AddModule(entitymanager);
+	AddModule(player);
 	AddModule(ui_manager);
 	AddModule(menu);
 	AddModule(fade);

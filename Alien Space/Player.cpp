@@ -7,7 +7,6 @@
 #include "j1FadeToBlack.h"
 #include "j1Collision.h"
 #include "j1Audio.h"
-#include "EntityManager.h"
 #include "j1Timer.h"
 #include "j1Scene.h"
 #include "j1Menu.h"
@@ -15,11 +14,12 @@
 #include "j1Particles.h"
 #include "UI_Element.h"
 #include "UI_Manager.h"
+#include "ModuleEnemies.h"
 #include "Image.h"
 
 #include "Brofiler/Brofiler.h"
 
-Player::Player() : Entity()
+Player::Player() : j1Module()
 {
 
 }
@@ -67,7 +67,7 @@ bool Player::Update(float dt)
 
 	App->render->Blit(texture, position.x, position.y, &current_animation->GetCurrentFrame(dt));
 	if (coll == nullptr) 
-		coll = App->collision->AddCollider({ position.x,position.y,41,47 }, COLLIDER_PLAYER, (j1Module*)App->entitymanager);
+		coll = App->collision->AddCollider({ position.x,position.y,41,47 }, COLLIDER_PLAYER, this);
 	coll->SetPos(position.x, position.y);
 	return true;
 }
@@ -98,16 +98,18 @@ bool Player::CleanUp()
 	return true;
 }
 
-void Player::OnCollision(Collider * c2) //this determine what happens when the player touch a type of collider
+void Player::OnCollision(Collider* c1, Collider* c2) //this determine what happens when the player touch a type of collider
 {
-	if (c2->type == COLLIDER_ENEMY_SPIDER) {
-		App->scene->active = false;
-		App->entitymanager->active = false;
-		App->collision->active = false;
-		App->menu->start = true;
-		App->menu->GameOn = false;
-		App->menu->Start();
-	}
+	App->enemies->DeleteEnemies();
+	App->menu->InMainMenu = true;
+	App->menu->GoStart = false;
+	App->scene->active = false;
+	App->collision->active = false;
+	App->menu->buttonSTART->pressed = false;
+	App->menu->start = true;
+	App->menu->GameOn = false;
+	App->menu->Start();
+	
 }
 
 void Player::Controls()
