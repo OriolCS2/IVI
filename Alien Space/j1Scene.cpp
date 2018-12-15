@@ -110,7 +110,7 @@ void j1Scene::SpawnEnemies(int Round)
 {
 
 	App->enemies->AddEnemy(PATHFINDINGSHIP, 201, 110,0);
-	App->enemies->AddEnemy(VERTICAL_SHIP, 250, 100, 0);
+	App->enemies->AddEnemy(LINE, 250, 600, 1);
 
 
 	
