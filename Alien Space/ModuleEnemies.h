@@ -2,7 +2,7 @@
 #define __ModuleEnemies_H__
 
 #include "j1Module.h"
-#include "VerticalShip.h"
+#include "EnemyLine.h"
 
 
 #define MAX_ENEMIES 500
@@ -12,7 +12,7 @@ enum ENEMY_TYPES {
 	
 	No_TYPE = 0,
 
-	VERTICAL_SHIP,
+	LINE,
 	HORITZONTAL_SHIP,
 	VERTICAL,
 
@@ -43,7 +43,7 @@ public:
 	bool CleanUp();
 	bool DeleteEnemies();
 	void OnCollision(Collider* c1, Collider* c2);
-	bool AddEnemy(ENEMY_TYPES type, int x, int y, int direction=0);
+	bool AddEnemy(ENEMY_TYPES type, int x, int y, int direction);
 
 private:
 

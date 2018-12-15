@@ -83,6 +83,7 @@
     <ClCompile Include="Button.cpp" />
     <ClCompile Include="CheckBox.cpp" />
     <ClCompile Include="Enemy.cpp" />
+    <ClCompile Include="EnemyLine.cpp" />
     <ClCompile Include="Image.cpp" />
     <ClCompile Include="j1Collision.cpp" />
     <ClCompile Include="j1FadeToBlack.cpp" />
@@ -110,12 +111,12 @@
     <ClCompile Include="UI_Element.cpp" />
     <ClCompile Include="UI_Manager.cpp" />
     <ClCompile Include="Vertical.cpp" />
-    <ClCompile Include="VerticalShip.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Button.h" />
     <ClInclude Include="CheckBox.h" />
     <ClInclude Include="Enemy.h" />
+    <ClInclude Include="EnemyLine.h" />
     <ClInclude Include="Image.h" />
     <ClInclude Include="j1Collision.h" />
     <ClInclude Include="j1FadeToBlack.h" />
@@ -151,7 +152,6 @@
     <ClInclude Include="UI_Element.h" />
     <ClInclude Include="UI_Manager.h" />
     <ClInclude Include="Vertical.h" />
-    <ClInclude Include="VerticalShip.h" />
   </ItemGroup>
   <ItemGroup>
     <Xml Include="Game\config.xml">

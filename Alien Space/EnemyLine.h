@@ -5,7 +5,7 @@
 #include "path.h"
 #include "p2Point.h"
 
-class Enemy_VerticalShip : public Enemy
+class Enemy_Line : public Enemy
 {
 private:
 	float wave = -1.0f;
@@ -21,7 +21,7 @@ private:
 	int DIRECTION;
 public:
 
-	Enemy_VerticalShip(int x, int y, int direction);
+	Enemy_Line(int x, int y, int direction);
 	void OnCollision(Collider* collider);
 	void Move(float dt);
 };
