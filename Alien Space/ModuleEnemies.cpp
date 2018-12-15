@@ -4,6 +4,7 @@
 #include "ModuleEnemies.h"
 #include "j1Particles.h"
 #include "j1Textures.h"
+#include "Vertical.h"
 #include "Enemy.h"
 #include "j1Window.h"
 #include "Player.h"
@@ -141,9 +142,14 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::HORITZONTAL_SHIP:
 			enemies[i] = new PathFindingShip(info.x, info.y);
 			break;
+		case ENEMY_TYPES::VERTICAL:
+			enemies[i] = new Vertical(info.x, info.y);
+			break;
 		}
+		
 	}
-}
+	}
+
 
 void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 {
@@ -165,6 +171,12 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				enemies[i] = nullptr;
 				break;
 			case HORITZONTAL_SHIP:
+				App->player->EnemiesKilled++;
+				enemies[i]->OnCollision(c2);
+				delete enemies[i];
+				enemies[i] = nullptr;
+				break;
+			case VERTICAL:
 				App->player->EnemiesKilled++;
 				enemies[i]->OnCollision(c2);
 				delete enemies[i];

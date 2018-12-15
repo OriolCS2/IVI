@@ -109,6 +109,7 @@
     <ClCompile Include="Slider.cpp" />
     <ClCompile Include="UI_Element.cpp" />
     <ClCompile Include="UI_Manager.cpp" />
+    <ClCompile Include="Vertical.cpp" />
     <ClCompile Include="VerticalShip.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -149,6 +150,7 @@
     <ClInclude Include="Slider.h" />
     <ClInclude Include="UI_Element.h" />
     <ClInclude Include="UI_Manager.h" />
+    <ClInclude Include="Vertical.h" />
     <ClInclude Include="VerticalShip.h" />
   </ItemGroup>
   <ItemGroup>

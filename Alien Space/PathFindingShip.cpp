@@ -29,10 +29,10 @@ PathFindingShip::PathFindingShip(int x, int y) : Enemy(x, y)
 	original_pos.y = y;
 	original_y = y;
 
-	if (position.x <= App->render->camera.x) {
+	if (position.x <= -App->render->camera.x) {
 		GORIGHT = true;
 	}
-	if (position.x >= App->render->camera.x + App->render->camera.w) {
+	if (position.x >= -App->render->camera.x + App->render->camera.w) {
 		GOLEFT = true;
 	}
 

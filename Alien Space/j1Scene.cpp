@@ -111,6 +111,8 @@ void j1Scene::SpawnEnemies(int Round)
 
 	App->enemies->AddEnemy(HORITZONTAL_SHIP, -500, 110,2);
 
+	App->enemies->AddEnemy(VERTICAL, 500, 1410, 2);
+
 	/*
 	if (Round == 1) {
 		App->enemies->AddEnemy(VERTICAL_SHIP, 81, 10, 2, 2);
