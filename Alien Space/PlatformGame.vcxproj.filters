@@ -88,11 +88,10 @@
     <ClCompile Include="PathFindingShip.cpp">
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
-<<<<<<< HEAD
     <ClCompile Include="Vertical.cpp">
-=======
+      <Filter>Modules\Enemies</Filter>
+    </ClCompile>
     <ClCompile Include="EnemyLine.cpp">
->>>>>>> f65e403dafd62d8302467c93e12a530c58068510
       <Filter>Modules\Enemies</Filter>
     </ClCompile>
   </ItemGroup>
@@ -208,11 +207,10 @@
     <ClInclude Include="PathFindingShip.h">
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
-<<<<<<< HEAD
     <ClInclude Include="Vertical.h">
-=======
+      <Filter>Modules\Enemies</Filter>
+    </ClInclude>
     <ClInclude Include="EnemyLine.h">
->>>>>>> f65e403dafd62d8302467c93e12a530c58068510
       <Filter>Modules\Enemies</Filter>
     </ClInclude>
   </ItemGroup>
