@@ -13,9 +13,7 @@ enum ENEMY_TYPES {
 	No_TYPE = 0,
 
 	LINE,
-	PATHFINDINGSHIP,
-
-
+	HORITZONTAL_SHIP,
 };
 
 class Enemy;

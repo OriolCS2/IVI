@@ -18,10 +18,10 @@ Enemy_Line::Enemy_Line(int x, int y, int direction) : Enemy(x, y) //if direction
 	switch (direction)
 	{
 	case 0:
-		fly.PushBack({ 42, 0, 41, 41 }); // 0
+		fly.PushBack({ 0, 0, 41, 41 }); // 0
 		break;
 	case 1:
-		fly.PushBack({ 0, 0, 41, 41 }); // 1
+		fly.PushBack({ 42, 0, 41, 41 }); // 1
 		break;
 	case 2:
 		fly.PushBack({ 84, 0, 41, 41 }); // 2
