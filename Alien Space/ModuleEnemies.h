@@ -26,6 +26,7 @@ struct EnemyInfo
 	int x, y;
 	int Type;
 	int num;
+	int direction;
 };
 
 class ModuleEnemies : public j1Module
@@ -42,7 +43,7 @@ public:
 	bool CleanUp();
 	bool DeleteEnemies();
 	void OnCollision(Collider* c1, Collider* c2);
-	bool AddEnemy(ENEMY_TYPES type, int x, int y, int Type, int num = 1);
+	bool AddEnemy(ENEMY_TYPES type, int x, int y, int direction=0);
 
 private:
 

@@ -109,7 +109,7 @@ bool j1Scene::Save(pugi::xml_node & scene) const
 void j1Scene::SpawnEnemies(int Round)
 {
 
-	App->enemies->AddEnemy(HORITZONTAL_SHIP, -500, 110,2,2);
+	App->enemies->AddEnemy(HORITZONTAL_SHIP, -500, 110,2);
 
 	/*
 	if (Round == 1) {
@@ -262,6 +262,10 @@ void j1Scene::SpawnEnemies(int Round)
 	
 
 	*/
+
+	
+
+
 
 
 	
