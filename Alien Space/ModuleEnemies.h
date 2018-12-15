@@ -13,6 +13,7 @@ enum ENEMY_TYPES {
 	No_TYPE = 0,
 
 	VERTICAL_SHIP,
+	PATHFINDINGSHIP,
 
 
 };

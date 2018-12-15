@@ -23,6 +23,7 @@ class j1FadeToBlack;
 class j1Fonts;
 class Player;
 class ModuleEnemies;
+class j1PathFinding;
 
 class j1App
 {
@@ -102,6 +103,7 @@ public:
 	j1Particles*		particles;
 	UI_Manager*			ui_manager;
 	j1FadeToBlack*		fade;
+	j1PathFinding*		pathfinding;
 	j1Fonts*			fonts;
 	ModuleEnemies*		enemies;
 

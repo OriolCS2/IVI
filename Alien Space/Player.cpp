@@ -123,13 +123,23 @@ void Player::Controls()
 {
 
 	if (position.x >= -App->render->camera.x + 9) {
-		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT) {
+		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) {
 			position.x -= 400 * DT;
 		}
 	}
 	if (position.x <= -App->render->camera.x + App->render->camera.w - 49) {
-		if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT || App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT) {
+		if (App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT) {
 			position.x += 400 * DT;
+		}
+	}
+	if (position.y >= -App->render->camera.y + 9) {
+		if (App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT) {
+			position.y -= 400 * DT;
+		}
+	}
+	if (position.y <= -App->render->camera.y + App->render->camera.h - 53) {
+		if (App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT) {
+			position.y += 400 * DT;
 		}
 	}
 	if (App->input->GetKey(SDL_SCANCODE_J) == KEY_DOWN && SDL_GetTicks() - Time >= 200) {

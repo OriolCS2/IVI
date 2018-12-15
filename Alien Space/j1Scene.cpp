@@ -63,11 +63,11 @@ bool j1Scene::Update(float dt)
 
 	if (App->player->EnemiesKilled == 28 && !SpawnRound2) {
 		SpawnRound2 = true;
-		SpawnEnemies(2);
+		//SpawnEnemies(2);
 	}
 	if (App->player->EnemiesKilled == 70 && !SpawnRound3) {
 		SpawnRound3 = true;
-		SpawnEnemies(3);
+		//SpawnEnemies(3);
 	}
 
 	return true;
@@ -108,7 +108,10 @@ bool j1Scene::Save(pugi::xml_node & scene) const
 
 void j1Scene::SpawnEnemies(int Round)
 {
-	
+
+	App->enemies->AddEnemy(PATHFINDINGSHIP, 201, 110,2,2);
+
+	/*
 	if (Round == 1) {
 		App->enemies->AddEnemy(VERTICAL_SHIP, 81, 10, 2, 2);
 		App->enemies->AddEnemy(VERTICAL_SHIP, 131, 10, 3, 5);
@@ -258,7 +261,7 @@ void j1Scene::SpawnEnemies(int Round)
 	}
 	
 
-
+	*/
 
 
 	
