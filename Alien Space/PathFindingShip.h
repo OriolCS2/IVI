@@ -17,6 +17,10 @@ private:
 	p2DynArray<iPoint>	PATH;
 	fPoint velocity;
 	float Speed = 300;
+	bool GoRight = true;
+	bool GoLeft = false;
+	bool GORIGHT = false;
+	bool GOLEFT = false;
 
 public:
 

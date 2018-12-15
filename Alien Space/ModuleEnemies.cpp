@@ -42,11 +42,11 @@ bool ModuleEnemies::PreUpdate()
 	{
 		if (queue[i].type != ENEMY_TYPES::No_TYPE)
 		{
-			if (queue[i].x * 1 < App->render->camera.x + (App->render->camera.w * 1) + SPAWN_MARGIN)
-			{
+			
+			
 				SpawnEnemy(queue[i]);
 				queue[i].type = ENEMY_TYPES::No_TYPE;
-			}
+			
 		}
 	}
 
@@ -68,17 +68,7 @@ bool ModuleEnemies::Update(float dt)
 bool ModuleEnemies::PostUpdate()
 {
 	// check camera position to decide what to spawn
-	for (uint i = 0; i < MAX_ENEMIES; ++i)
-	{
-		if (enemies[i] != nullptr)
-		{
-			if (enemies[i]->position.x * 1 < (App->render->camera.x) - SPAWN_MARGIN - 80)
-			{
-				delete enemies[i];
-				enemies[i] = nullptr;
-			}
-		}
-	}
+
 
 	return true;
 }
@@ -149,7 +139,7 @@ void ModuleEnemies::SpawnEnemy(const EnemyInfo& info)
 		case ENEMY_TYPES::VERTICAL_SHIP:
 			enemies[i] = new Enemy_VerticalShip(info.x, info.y, info.Type, info.num);
 			break;
-		case ENEMY_TYPES::PATHFINDINGSHIP:
+		case ENEMY_TYPES::HORITZONTAL_SHIP:
 			enemies[i] = new PathFindingShip(info.x, info.y);
 			break;
 		}
@@ -175,7 +165,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 				delete enemies[i];
 				enemies[i] = nullptr;
 				break;
-			case PATHFINDINGSHIP:
+			case HORITZONTAL_SHIP:
 				App->player->EnemiesKilled++;
 				enemies[i]->OnCollision(c2);
 				delete enemies[i];

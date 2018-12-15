@@ -4,6 +4,7 @@
 #include "J1Particles.h"
 #include "ModuleEnemies.h"
 #include "path.h"
+#include "j1Window.h"
 #include "j1Render.h"
 #include "Player.h"
 #include "j1Pathfinding.h"
@@ -15,7 +16,7 @@
 
 PathFindingShip::PathFindingShip(int x, int y) : Enemy(x, y)
 {
-	type = PATHFINDINGSHIP;
+	type = HORITZONTAL_SHIP;
 
 	fly.PushBack({ 0, 0, 41, 41 }); // 1
 
@@ -28,41 +29,34 @@ PathFindingShip::PathFindingShip(int x, int y) : Enemy(x, y)
 	original_pos.y = y;
 	original_y = y;
 
+	if (position.x <= App->render->camera.x) {
+		GORIGHT = true;
+	}
+	if (position.x >= App->render->camera.x + App->render->camera.w) {
+		GOLEFT = true;
+	}
+
 }
 
 void PathFindingShip::Move(float dt)
 {
 	
-	float x = App->player->position.x;
-	float y = App->player->position.y;
-
-	
-		iPoint origin = { position.x / 70,position.y / 70 };
-		iPoint destination = {App->player->position.x/70,App->player->position.y/70};
-		if (position.DistanceTo(App->player->position)) {
-			App->pathfinding->CreatePath(origin, destination);
-			const p2DynArray<iPoint>* path = App->pathfinding->GetLastPath();
-			for (int i = 0; i < path->Count(); i++) {
-				PATH.PushBack(*path->At(i));
-			}
+	if ((position.x >= -App->render->camera.x && GoRight) || GORIGHT) {
+		position.x += 300 * dt;
+		if (position.x >= -App->render->camera.x + App->win->Width - 40) {
+			GoLeft = true;
+			GoRight = false;
+			GORIGHT = false;
 		}
-		if (PATH.Count() > 1) {
-			velocity.x = -Speed;
-			velocity.y = Speed;
+	}
+	if ((position.x <= -App->render->camera.x + App->render->camera.w && GoLeft) || GOLEFT) {
+		position.x -= 300 * dt;
+		if (position.x <= -App->render->camera.x + 5) {
+			GoLeft = false;
+			GoRight = true;
+			GOLEFT = false;
 		}
-		if (App->player->position.x < position.x) {
-			position.x += velocity.x * dt;
-		}
-		else {
-			position.x += -velocity.x * dt;
-		}
-		if (App->player->position.y > position.y) {
-			position.y += velocity.y * dt;
-		}
-		if (App->player->position.y < position.y) {
-			position.y -= velocity.y * dt;
-		}
-	
+	}
 
 }
 
