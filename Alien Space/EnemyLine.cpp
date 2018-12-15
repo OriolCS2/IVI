@@ -29,6 +29,18 @@ Enemy_Line::Enemy_Line(int x, int y, int direction) : Enemy(x, y) //if direction
 	case 3:
 		fly.PushBack({ 127, 0, 41, 41 }); // 3
 		break;
+	case 4:
+		fly.PushBack({ 170, 0, 44, 46 }); // 0
+		break;
+	case 5:
+		fly.PushBack({ 215, 0, 45, 46 }); // 1
+		break;
+	case 6:
+		fly.PushBack({ 263, 0, 44, 46 }); // 2
+		break;
+	case 7:
+		fly.PushBack({ 309, 0, 44, 46 }); // 3
+		break;
 	}
 	
 
@@ -49,16 +61,33 @@ void Enemy_Line::Move(float dt)
 	switch (DIRECTION)
 	{
 	case 0:
-		position.y += 200 * dt;
+		position.y += 300 * dt;
 		break;
 	case 1:
-		position.y -= 200 * dt;
+		position.y -= 300 * dt;
 		break;
 	case 2:
 		position.x -= 300 * dt;
 		break;
 	case 3:
 		position.x += 300 * dt;
+		break;
+	case 4:
+		position.y += 300 * dt;
+		position.x -= 300 * dt;
+		break;
+	case 5:
+		position.y += 300 * dt;
+		position.x += 300 * dt;
+		break;
+	case 6:
+		position.x -= 300 * dt;
+		position.y -= 300 * dt;
+		break;
+	case 7:
+		position.x += 300 * dt;
+		position.y -= 300 * dt;
+		break;
 	}
 }
 
