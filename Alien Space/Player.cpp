@@ -7,6 +7,7 @@
 #include "j1FadeToBlack.h"
 #include "j1Collision.h"
 #include "j1Audio.h"
+#include "p2SString.h"
 #include "j1Timer.h"
 #include "j1Scene.h"
 #include "j1Menu.h"
@@ -100,9 +101,11 @@ bool Player::Load(pugi::xml_node& player)
 }
 bool Player::Save(pugi::xml_node& player) const
 {
-	
+	player.append_child("Vida_Numero").append_attribute("value") = XML_VIDA;
+	player.append_child("RondaDeMuerte").append_attribute("value") = XML_RONDA;
 	player.append_child("Enemigos_Asesinados").append_attribute("value") = XML_enemieskilled;
 	player.append_child("Numero_de_Disparos").append_attribute("value") = XML_ShootNum;
+	
 	return true;
 }
 
@@ -114,10 +117,13 @@ bool Player::CleanUp()
 
 void Player::OnCollision(Collider* c1, Collider* c2) //this determine what happens when the player touch a type of collider
 {
-	
+	++NumeroDeMuertes;
+	XML_VIDA = NumeroDeMuertes;
 	XML_enemieskilled = EnemiesKilled;
 	XML_ShootNum = ShootNum;
-	App->SaveGame("Estadisticas.xml");
+	XML_RONDA = RONDA;
+	Estadisticas.create("Estadisticas_%i.xml", NumeroDeMuertes);
+	App->SaveGame(Estadisticas.GetString());
 
 	App->enemies->DeleteEnemies();
 	App->menu->InMainMenu = true;

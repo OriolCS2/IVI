@@ -3,6 +3,7 @@
 
 #include "p2Animation.h"
 #include "p2Point.h"
+#include "p2SString.h"
 #include "j1Module.h"
 
 class UI_Element;
@@ -58,6 +59,11 @@ public:
 	int ShootNum = 0; 
 	int XML_ShootNum = -10;
 	bool GOD = false;
+	int NumeroDeMuertes = 0;
+	int XML_VIDA = -10;
+	int RONDA = 1;
+	int XML_RONDA = -10;
+	p2SString Estadisticas;
 };
 
 

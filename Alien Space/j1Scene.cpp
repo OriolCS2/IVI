@@ -69,6 +69,7 @@ bool j1Scene::Update(float dt)
 
 	if (SDL_GetTicks() - Time >= 4000 && !SpawnRound2) { //ROUND2
 		rounds->ChangeLabel("ROUND 2", 40);
+		App->player->RONDA++;
 		Time = SDL_GetTicks();
 		SpawnRound2 = true;
 		SpawnEnemies(2);
@@ -76,6 +77,7 @@ bool j1Scene::Update(float dt)
 
 	if (SDL_GetTicks() - Time >= 4000 && !SpawnRound3) { //ROUND3
 		rounds->ChangeLabel("ROUND 3", 40);
+		App->player->RONDA++;
 		Time = SDL_GetTicks();
 		SpawnRound3 = true;
 		SpawnEnemies(3);
@@ -172,6 +174,7 @@ void j1Scene::SpawnEnemies(int Round)
 
 void j1Scene::ResetRounds()
 {
+	App->player->RONDA = 1;
 	SpawnRound2 = false;
 	SpawnRound3 = false;
 }
