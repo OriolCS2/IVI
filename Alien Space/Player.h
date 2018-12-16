@@ -57,6 +57,7 @@ public:
 	int XML_enemieskilled = -10;
 	int ShootNum = 0; 
 	int XML_ShootNum = -10;
+	bool GOD = false;
 };
 
 

@@ -41,6 +41,7 @@ public:
 	_TTF_Font*			default;
 	_TTF_Font*			InitialMenu;
 	_TTF_Font*			PlayerUI;
+	_TTF_Font*			Time;
 };
 
 

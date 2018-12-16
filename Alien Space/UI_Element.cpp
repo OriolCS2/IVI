@@ -7,6 +7,7 @@
 #include "UI_Manager.h"
 #include "j1Audio.h"
 #include "j1Window.h"
+#include "j1Fonts.h"
 
 UI_Element::UI_Element()
 {
@@ -116,4 +117,12 @@ void UI_Element::SetSpritesData(SDL_Rect Idle, SDL_Rect Hover, SDL_Rect Pressed)
 		height = Idle.h;
 	}
 
+}
+void UI_Element::ChangeLabel(p2SString label, int size)
+{
+	if (App->fonts->Time == nullptr)
+		App->fonts->Time = App->fonts->Load(App->fonts->path, size);
+	App->tex->UnLoad(tex);
+	tex = App->fonts->Print(label.GetString(), App->fonts->Time);
+	App->fonts->CalcSize(label.GetString(), width, height, App->fonts->Time);
 }

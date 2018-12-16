@@ -5,7 +5,7 @@
 #include "EnemyLine.h"
 
 
-#define MAX_ENEMIES 500
+#define MAX_ENEMIES 1000
 
 
 enum ENEMY_TYPES {

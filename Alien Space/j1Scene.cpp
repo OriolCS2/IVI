@@ -61,13 +61,18 @@ bool j1Scene::Update(float dt)
 	
 	App->render->Blit(space, 0, 0, NULL);
 
-	if (App->player->EnemiesKilled == 28 && !SpawnRound2) {
+	if (SDL_GetTicks() - Time >= 4000 && !SpawnRound2) { //ROUND2
+		rounds->ChangeLabel("ROUND 2", 40);
+		Time = SDL_GetTicks();
 		SpawnRound2 = true;
-		//SpawnEnemies(2);
+		SpawnEnemies(2);
 	}
-	if (App->player->EnemiesKilled == 70 && !SpawnRound3) {
+
+	if (SDL_GetTicks() - Time >= 4000 && !SpawnRound3) { //ROUND3
+		rounds->ChangeLabel("ROUND 3", 40);
+		Time = SDL_GetTicks();
 		SpawnRound3 = true;
-		//SpawnEnemies(3);
+		SpawnEnemies(3);
 	}
 
 	return true;
@@ -91,186 +96,78 @@ bool j1Scene::CleanUp()
 	return true;
 }
 
-bool j1Scene::Load(pugi::xml_node & scene)
-{
-	
-
-	return true;
-}
-
-bool j1Scene::Save(pugi::xml_node & scene) const
-{
-	
-
-
-	return true;
-}
 
 void j1Scene::SpawnEnemies(int Round)
 {
 
 
-	App->enemies->AddEnemy(LINE, 250, 600, 1);
-	App->enemies->AddEnemy(HORITZONTAL_SHIP, -500, 110,2);
-
-	App->enemies->AddEnemy(VERTICAL, 500, 1410, 2);
-
-
-	App->enemies->AddEnemy(LINE, 800, 0, 4);
-	App->enemies->AddEnemy(LINE, 0, 0, 5);
-	App->enemies->AddEnemy(LINE, 800, 800, 6);
-	App->enemies->AddEnemy(LINE, 0, 800, 7);
-	/*
 	if (Round == 1) {
-		App->enemies->AddEnemy(VERTICAL_SHIP, 81, 10, 2, 2);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 131, 10, 3, 5);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 182, 10, 4, 4);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 233, 10, 5, 6);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 284, 10, 6, 3);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 335, 10, 7, 8);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 386, 10, 8, 7);
+		App->enemies->AddEnemy(LINE, 100, -700, 0);
+		App->enemies->AddEnemy(LINE, 400, -500, 0);
+		App->enemies->AddEnemy(LINE, 320, -900, 0);
+		App->enemies->AddEnemy(LINE, 610, -400, 0);
+		App->enemies->AddEnemy(LINE, 480, -700, 0);
+		App->enemies->AddEnemy(LINE, 543, -650, 0);
+		App->enemies->AddEnemy(LINE, 710, -570, 0);
+		App->enemies->AddEnemy(LINE, 735, -800, 0);
 
-		App->enemies->AddEnemy(VERTICAL_SHIP, 81, -68, 2, 5);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 131, -68, 3, 7);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 182, -68, 4, 3);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 233, -68, 5, 6);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 284, -68, 6, 8);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 335, -68, 7, 4);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 386, -68, 8, 2);
-
-		App->enemies->AddEnemy(VERTICAL_SHIP, 81, -146, 2, 4);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 131, -146, 3, 7);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 182, -146, 4, 2);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 233, -146, 5, 8);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 284, -146, 6, 6);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 335, -146, 7, 3);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 386, -146, 8, 5);
-
-		App->enemies->AddEnemy(VERTICAL_SHIP, 81, -225, 2, 3);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 131, -225, 3, 6);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 182, -225, 4, 5);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 233, -225, 5, 8);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 284, -225, 6, 7);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 335, -225, 7, 4);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 386, -225, 8, 2);
+		App->enemies->AddEnemy(LINE, 100, -400, 0);
+		App->enemies->AddEnemy(LINE, 170, -530, 0);
+		App->enemies->AddEnemy(LINE, 260, -600, 0);
+		App->enemies->AddEnemy(LINE, 410, -830, 0);
+		App->enemies->AddEnemy(LINE, 180, -970, 0);
+		App->enemies->AddEnemy(LINE, 443, -450, 0);
+		App->enemies->AddEnemy(LINE, 510, -570, 0);
+		App->enemies->AddEnemy(LINE, 375, -640, 0);
 	}
 	if (Round == 2) {
-		App->enemies->AddEnemy(VERTICAL_SHIP, 81, 10, 2, 2);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 131, 10, 3, 5);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 182, 10, 4, 4);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 233, 10, 5, 6);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 284, 10, 6, 3);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 335, 10, 7, 8);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 386, 10, 8, 7);
+		App->enemies->AddEnemy(LINE, -400, 400, 3);
+		App->enemies->AddEnemy(LINE, -770, 500, 3);
+		App->enemies->AddEnemy(LINE, -900, 200, 3);
+		App->enemies->AddEnemy(LINE, -1050, 400, 3);
+		App->enemies->AddEnemy(LINE, -500, 600, 3);
+		App->enemies->AddEnemy(LINE, -650, 650, 3);
+		App->enemies->AddEnemy(LINE, -980, 570, 3);
+		App->enemies->AddEnemy(LINE, -1100, 100, 3);
 
-		App->enemies->AddEnemy(VERTICAL_SHIP, 81, -68, 2, 5);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 131, -68, 3, 7);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 182, -68, 4, 3);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 233, -68, 5, 6);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 284, -68, 6, 8);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 335, -68, 7, 4);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 386, -68, 8, 2);
-
-		App->enemies->AddEnemy(VERTICAL_SHIP, 81, -146, 2, 4);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 131, -146, 3, 7);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 182, -146, 4, 2);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 233, -146, 5, 8);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 284, -146, 6, 6);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 335, -146, 7, 3);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 386, -146, 8, 5);
-
-		App->enemies->AddEnemy(VERTICAL_SHIP, 81, -225, 2, 3);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 131, -225, 3, 6);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 182, -225, 4, 5);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 233, -225, 5, 8);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 284, -225, 6, 7);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 335, -225, 7, 4);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 386, -225, 8, 2);
-
-		App->enemies->AddEnemy(VERTICAL_SHIP, 81, -304, 2, 5);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 131, -304, 3, 6);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 182, -304, 4, 4);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 233, -304, 5, 8);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 284, -304, 6, 2);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 335, -304, 7, 7);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 386, -304, 8, 3);
-
-		App->enemies->AddEnemy(VERTICAL_SHIP, 81, -383, 2, 2);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 131, -383, 3, 4);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 182, -383, 4, 6);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 233, -383, 5, 7);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 284, -383, 6, 3);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 335, -383, 7, 5);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 386, -383, 8, 8);
+		App->enemies->AddEnemy(LINE, -490, 400, 3);
+		App->enemies->AddEnemy(LINE, -690, 330, 3);
+		App->enemies->AddEnemy(LINE, -730, 600, 3);
+		App->enemies->AddEnemy(LINE, -210, 430, 3);
+		App->enemies->AddEnemy(LINE, -1000, 270, 3);
+		App->enemies->AddEnemy(LINE, -820, 450, 3);
+		App->enemies->AddEnemy(LINE, -650, 470, 3);
+		App->enemies->AddEnemy(LINE, -890, 240, 3);
 	}
 	if (Round == 3) {
-		App->enemies->AddEnemy(VERTICAL_SHIP, 81, 10, 2, 2);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 131, 10, 3, 5);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 182, 10, 4, 4);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 233, 10, 5, 6);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 284, 10, 6, 3);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 335, 10, 7, 8);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 386, 10, 8, 7);
+		App->enemies->AddEnemy(LINE, 100, -700, 0);
+		App->enemies->AddEnemy(LINE, 300, -500, 0);
+		App->enemies->AddEnemy(LINE, 320, -900, 0);
+		App->enemies->AddEnemy(LINE, 210, -400, 0);
+		App->enemies->AddEnemy(LINE, 280, -700, 0);
+		App->enemies->AddEnemy(LINE, 543, -650, 0);
+		App->enemies->AddEnemy(LINE, 510, -570, 0);
+		App->enemies->AddEnemy(LINE, 475, -800, 0);
 
-		App->enemies->AddEnemy(VERTICAL_SHIP, 81, -68, 2, 5);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 131, -68, 3, 7);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 182, -68, 4, 3);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 233, -68, 5, 6);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 284, -68, 6, 8);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 335, -68, 7, 4);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 386, -68, 8, 2);
-
-		App->enemies->AddEnemy(VERTICAL_SHIP, 81, -146, 2, 4);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 131, -146, 3, 7);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 182, -146, 4, 2);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 233, -146, 5, 8);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 284, -146, 6, 6);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 335, -146, 7, 3);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 386, -146, 8, 5);
-
-		App->enemies->AddEnemy(VERTICAL_SHIP, 81, -225, 2, 3);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 131, -225, 3, 6);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 182, -225, 4, 5);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 233, -225, 5, 8);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 284, -225, 6, 7);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 335, -225, 7, 4);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 386, -225, 8, 2);
-
-		App->enemies->AddEnemy(VERTICAL_SHIP, 81, -304, 2, 5);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 131, -304, 3, 6);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 182, -304, 4, 4);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 233, -304, 5, 8);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 284, -304, 6, 2);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 335, -304, 7, 7);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 386, -304, 8, 3);
-
-		App->enemies->AddEnemy(VERTICAL_SHIP, 81, -383, 2, 2);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 131, -383, 3, 4);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 182, -383, 4, 6);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 233, -383, 5, 7);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 284, -383, 6, 3);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 335, -383, 7, 5);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 386, -383, 8, 8);
-
-		App->enemies->AddEnemy(VERTICAL_SHIP, 81, -462, 2, 2);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 131, -462, 3, 3);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 182, -462, 4, 8);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 233, -462, 5, 5);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 284, -462, 6, 4);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 335, -462, 7, 6);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 386, -462, 8, 7);
-
-		App->enemies->AddEnemy(VERTICAL_SHIP, 81, -541, 2, 3);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 131, -541, 3, 7);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 182, -541, 4, 6);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 233, -541, 5, 8);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 284, -541, 6, 5);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 335, -541, 7, 4);
-		App->enemies->AddEnemy(VERTICAL_SHIP, 386, -541, 8, 2);
+		App->enemies->AddEnemy(LINE, 500, -400, 0);
+		App->enemies->AddEnemy(LINE, 670, -530, 0);
+		App->enemies->AddEnemy(LINE, 460, -600, 0);
+		App->enemies->AddEnemy(LINE, 210, -830, 0);
+		App->enemies->AddEnemy(LINE, 180, -970, 0);
+		App->enemies->AddEnemy(LINE, 343, -450, 0);
+		App->enemies->AddEnemy(LINE, 610, -570, 0);
+		App->enemies->AddEnemy(LINE, 275, -640, 0);
 	}
-	
 
-	*/
+
+	
+	
+}
+
+void j1Scene::ResetRounds()
+{
+	SpawnRound2 = false;
+	SpawnRound3 = false;
 }
 
 

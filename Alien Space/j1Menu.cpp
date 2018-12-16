@@ -126,13 +126,15 @@ bool j1Menu::PostUpdate()
 	}
 	if (GoStart) {
 		if (App->fade->current_step==App->fade->fade_from_black) {
+			App->scene->ResetRounds();
 			App->ui_manager->DeleteAllUI();
 			App->scene->active = true;
 			App->collision->active = true;
 			GoStart = false;
+			App->scene->Time = SDL_GetTicks();
 			App->scene->SpawnEnemies(1);
 			App->player->Start();
-
+			App->scene->rounds = App->ui_manager->CreateLabel(350, 10, "ROUND 1", 40, false);
 			GameOn = true;
 		}
 	}

@@ -66,16 +66,28 @@ bool Player::Update(float dt)
 	Controls();
 
 	App->render->Blit(texture, position.x, position.y, &current_animation->GetCurrentFrame(dt));
-	if (coll == nullptr) 
-		coll = App->collision->AddCollider({ position.x,position.y,41,47 }, COLLIDER_PLAYER, this);
-	coll->SetPos(position.x, position.y);
+	if (!GOD) {
+		if (coll == nullptr)
+			coll = App->collision->AddCollider({ position.x,position.y,41,47 }, COLLIDER_PLAYER, this);
+		coll->SetPos(position.x, position.y);
+	}
+	
 	return true;
 }
 
 bool Player::PostUpdate()
 {
 	BROFILER_CATEGORY("Player: PostUpdate", Profiler::Color::Green);
-	
+	if (App->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) {
+		if (GOD) {
+			GOD = false;
+		}
+		else {
+			GOD = true;
+			App->collision->ColliderCleanUpPlayer();
+			coll = nullptr;
+		}
+	}
 	return true;
 }
 bool Player::Load(pugi::xml_node& player)
@@ -102,10 +114,11 @@ bool Player::CleanUp()
 
 void Player::OnCollision(Collider* c1, Collider* c2) //this determine what happens when the player touch a type of collider
 {
+	
 	XML_enemieskilled = EnemiesKilled;
 	XML_ShootNum = ShootNum;
 	App->SaveGame("Estadisticas.xml");
-	
+
 	App->enemies->DeleteEnemies();
 	App->menu->InMainMenu = true;
 	App->menu->GoStart = false;
@@ -116,6 +129,8 @@ void Player::OnCollision(Collider* c1, Collider* c2) //this determine what happe
 	App->menu->GameOn = false;
 	App->menu->Start();
 	ShootNum = 0;
+	App->ui_manager->DeleteUI_Element(App->scene->rounds);
+	
 	
 }
 
@@ -142,16 +157,27 @@ void Player::Controls()
 			position.y += 400 * DT;
 		}
 	}
-	if (App->input->GetKey(SDL_SCANCODE_J) == KEY_DOWN && SDL_GetTicks() - Time >= 200) {
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT && SDL_GetTicks() - Time >= 200 && App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_IDLE) {
 		ShootNum++;
 		Time = SDL_GetTicks();
 		App->particles->AddParticle(App->particles->shoot, position.x + 16, position.y - 45, COLLIDER_PARTICLE);
 	}
-	if (App->input->GetKey(SDL_SCANCODE_K) == KEY_DOWN && SDL_GetTicks() - Time2 >= 200) {
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT && SDL_GetTicks() - Time >= 200 && App->input->GetKey(SDL_SCANCODE_UP) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_IDLE) {
 		ShootNum++;
-		Time2 = SDL_GetTicks();
+		Time = SDL_GetTicks();
 		App->particles->AddParticle(App->particles->shoot2, position.x + 16, position.y, COLLIDER_PARTICLE);
 	}
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT && SDL_GetTicks() - Time >= 200 && App->input->GetKey(SDL_SCANCODE_UP) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_IDLE) {
+		ShootNum++;
+		Time = SDL_GetTicks();
+		App->particles->AddParticle(App->particles->shootH2, position.x + 32, position.y + 21, COLLIDER_PARTICLE);
+	}
+	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT && SDL_GetTicks() - Time >= 200 && App->input->GetKey(SDL_SCANCODE_UP) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_IDLE) {
+		ShootNum++;
+		Time = SDL_GetTicks();
+		App->particles->AddParticle(App->particles->shootH, position.x - 20, position.y + 21, COLLIDER_PARTICLE);
+	}
+
 }
 
 void Player::StartPosition()

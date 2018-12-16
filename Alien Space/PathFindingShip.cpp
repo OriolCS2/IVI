@@ -24,7 +24,7 @@ PathFindingShip::PathFindingShip(int x, int y) : Enemy(x, y)
 
 	animation = &fly;
 
-	collider = App->collision->AddCollider({ 0, 0, 41, 21 }, COLLIDER_TYPE::COLLIDER_ENEMY_BAT, (j1Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 41, 46 }, COLLIDER_TYPE::COLLIDER_ENEMY_BAT, (j1Module*)App->enemies);
 	original_pos.x = x;
 	original_pos.y = y;
 	original_y = y;

@@ -46,12 +46,10 @@ Enemy_Line::Enemy_Line(int x, int y, int direction) : Enemy(x, y) //if direction
 
 	animation = &fly;
 
-	collider = App->collision->AddCollider({ 0, 0, 41, 21 }, COLLIDER_TYPE::COLLIDER_ENEMY_BAT, (j1Module*)App->enemies);
+	collider = App->collision->AddCollider({ 0, 0, 41, 46 }, COLLIDER_TYPE::COLLIDER_ENEMY_BAT, (j1Module*)App->enemies);
 	original_pos.x = x;
 	original_pos.y = y;
 	original_y = y;
-	this->shoot = shoot;
-	time = SDL_GetTicks();
 	DIRECTION= direction;
 	int f = 0;
 }

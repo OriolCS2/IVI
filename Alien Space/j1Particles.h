@@ -52,6 +52,8 @@ public:
 
 	Particle shoot;
 	Particle shoot2;
+	Particle shootH;
+	Particle shootH2;
 	Particle enemyshoot;
 	
 	SDL_Texture* texture;

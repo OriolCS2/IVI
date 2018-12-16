@@ -2,10 +2,11 @@
 #define __j1SCENE_H__
 
 #include "j1Module.h"
-
+#include "p2SString.h"
 
 struct SDL_Texture;
 class UI_Element;
+class Label;
 
 class j1Scene : public j1Module
 {
@@ -34,19 +35,19 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	bool Load(pugi::xml_node&);
-	bool Save(pugi::xml_node&) const;
 
 
 	void SpawnEnemies(int Round);
-
+	void ResetRounds();
 
 public:
 
 	SDL_Texture * space = nullptr;
 	bool SpawnRound2 = false;
 	bool SpawnRound3 = false;
-
+	int Time = 0;
+	p2SString Rounds;
+	UI_Element* rounds = nullptr;
 };
 
 #endif // __j1SCENE_H__

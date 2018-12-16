@@ -41,6 +41,8 @@ public:
 	void SetPos(int x, int y);
 	void SetSpritesData(SDL_Rect Idle, SDL_Rect Hover = { 0,0,0,0 }, SDL_Rect Pressed = { 0,0,0,0 });
 
+	void ChangeLabel(p2SString label, int size);
+
 public:
 	UI_Element * image = nullptr;
 	SDL_Texture * tex = nullptr;

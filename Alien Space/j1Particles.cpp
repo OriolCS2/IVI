@@ -57,6 +57,20 @@ bool j1Particles::Start()
 	enemyshoot.speed.x = 0;
 	enemyshoot.life = 3000;
 
+	shootH2.anim.PushBack({ 19,0,46,8 });
+	shootH2.anim.speed = 0.2f;
+	shootH2.anim.loop = true;
+	shootH2.speed.x = 500;
+	shootH2.speed.y = 0;
+	shootH2.life = 3000;
+
+	shootH.anim.PushBack({ 19,0,46,8 });
+	shootH.anim.speed = 0.2f;
+	shootH.anim.loop = true;
+	shootH.speed.x = -500;
+	shootH.speed.y = 0;
+	shootH.life = 3000;
+
 	return true;
 }
 
@@ -186,6 +200,15 @@ bool Particle::Update()
 		collider->SetPos(position.x, position.y);
 
 	if (position.y <= -App->render->camera.y) {
+		ret = false;
+	}
+	if (position.x <= -App->render->camera.x) {
+		ret = false;
+	}
+	if (position.x + collider->rect.w >= -App->render->camera.x + App->render->camera.w) {
+		ret = false;
+	}
+	if (position.y + collider->rect.h >= -App->render->camera.y + App->render->camera.h) {
 		ret = false;
 	}
 
