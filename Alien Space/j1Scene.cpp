@@ -61,6 +61,12 @@ bool j1Scene::Update(float dt)
 	
 	App->render->Blit(space, 0, 0, NULL);
 
+	// SE LI HA DE DIR AL XAN
+	// IMPORTANT
+	// SHA DESTUDIAR QUE LA GENT SEGUR QUE AL PRINCIPI ANIRA A MATAR I DISPARAR ENEMICS 
+	// I A MESURA QUE NO SHO PASSI COMENÇARA A SUDAR DE MATAR I ANIRA A ESQUIVAR
+	// IMPORTANT
+
 	if (SDL_GetTicks() - Time >= 4000 && !SpawnRound2) { //ROUND2
 		rounds->ChangeLabel("ROUND 2", 40);
 		Time = SDL_GetTicks();
