@@ -481,13 +481,17 @@ bool j1App::SavegameNow() const
 	pugi::xml_document data;
 	pugi::xml_node root;
 	
-	root = data.append_child("game_state");
+	//root = data.append_child("game_state");
 
 	p2List_item<j1Module*>* item = modules.start;
 
 	while(item != NULL && ret == true)
 	{
-		ret = item->data->Save(root.append_child(item->data->name.GetString()));
+		if (item->data->name == "ESTADISTICAS_DEL_JUGADOR") {
+			root = data.append_child(item->data->name.GetString());
+			ret = item->data->Save(root);
+		}
+			
 		item = item->next;
 	}
 

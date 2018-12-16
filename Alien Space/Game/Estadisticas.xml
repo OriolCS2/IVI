@@ -1,21 +1,5 @@
 <?xml version="1.0"?>
-<game_state>
-	<input />
-	<window />
-	<textures />
-	<audio />
-	<scene />
-	<fonts />
-	<:anonymous />
-	<pathfinding />
-	<particles />
-	<:anonymous />
-	<ESTADISTICAS_DEL_JUGADOR>
-		<Enemigos_Asesinados value="0" />
-		<Numero_de_Disparos value="0" />
-	</ESTADISTICAS_DEL_JUGADOR>
-	<UI />
-	<choose />
-	<:anonymous />
-	<renderer />
-</game_state>
+<ESTADISTICAS_DEL_JUGADOR>
+	<Enemigos_Asesinados value="6" />
+	<Numero_de_Disparos value="10" />
+</ESTADISTICAS_DEL_JUGADOR>
