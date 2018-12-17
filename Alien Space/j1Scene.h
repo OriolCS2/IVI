@@ -43,11 +43,23 @@ public:
 public:
 
 	SDL_Texture * space = nullptr;
+	bool StartRound1 = false;
+	bool StartRound2 = false;
+
 	bool SpawnRound2 = false;
-	bool SpawnRound3 = false;
+	bool SpawnRound3 = true;
+	bool SpawnRound4 = true;
+	bool SpawnRound5 = true;
+	bool SpawnRound6 = true;
+	bool SpawnRound7 = true;
+	bool SpawnRound8 = true;
 	int Time = 0;
 	p2SString Rounds;
 	UI_Element* rounds = nullptr;
+
+	bool SaveXML_ROUND1 = false;
+	bool SaveXMLROUND2 = false;
+
 };
 
 #endif // __j1SCENE_H__

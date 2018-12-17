@@ -101,8 +101,7 @@ bool Player::Load(pugi::xml_node& player)
 }
 bool Player::Save(pugi::xml_node& player) const
 {
-	player.append_child("Vida_Numero").append_attribute("value") = XML_VIDA;
-	player.append_child("RondaDeMuerte").append_attribute("value") = XML_RONDA;
+	player.append_child("Numero_De_Muertes").append_attribute("value") = XML_VIDA;
 	player.append_child("Enemigos_Asesinados").append_attribute("value") = XML_enemieskilled;
 	player.append_child("Numero_de_Disparos").append_attribute("value") = XML_ShootNum;
 	
@@ -117,7 +116,7 @@ bool Player::CleanUp()
 
 void Player::OnCollision(Collider* c1, Collider* c2) //this determine what happens when the player touch a type of collider
 {
-	++NumeroDeMuertes;
+	/*++NumeroDeMuertes;
 	XML_VIDA = NumeroDeMuertes;
 	XML_enemieskilled = EnemiesKilled;
 	XML_ShootNum = ShootNum;
@@ -136,8 +135,30 @@ void Player::OnCollision(Collider* c1, Collider* c2) //this determine what happe
 	App->menu->Start();
 	ShootNum = 0;
 	App->ui_manager->DeleteUI_Element(App->scene->rounds);
-	
-	
+	*/
+
+	++NumeroDeMuertes;
+	XML_VIDA = NumeroDeMuertes;
+	XML_enemieskilled = EnemiesKilled;
+	XML_ShootNum = ShootNum;
+	App->enemies->DeleteEnemies();
+
+
+	if (App->scene->StartRound1) {
+		App->scene->Time = SDL_GetTicks();
+		App->scene->SpawnEnemies(1);
+		CleanUp();
+		Start();
+		App->scene->SpawnRound2 = false;
+		App->scene->SpawnRound3 = false;
+	}
+	if (App->scene->StartRound2) {
+		App->scene->Time = SDL_GetTicks();
+		CleanUp();
+		Start();
+		App->scene->SpawnRound4 = false;
+	}
+
 }
 
 void Player::Controls()

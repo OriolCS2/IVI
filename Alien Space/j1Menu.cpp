@@ -132,6 +132,7 @@ bool j1Menu::PostUpdate()
 			App->collision->active = true;
 			GoStart = false;
 			App->scene->Time = SDL_GetTicks();
+			App->scene->StartRound1 = true;
 			App->scene->SpawnEnemies(1);
 			App->player->Start();
 			App->scene->rounds = App->ui_manager->CreateLabel(350, 10, "ROUND 1", 40, false);
