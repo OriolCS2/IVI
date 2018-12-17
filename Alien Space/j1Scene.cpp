@@ -67,17 +67,13 @@ bool j1Scene::Update(float dt)
 	// I A MESURA QUE NO SHO PASSI COMENÇARA A SUDAR DE MATAR I ANIRA A ESQUIVAR
 	// IMPORTANT
 
-	if (SDL_GetTicks() - Time >= 4000 && !SpawnRound2) { //ROUND2
-		rounds->ChangeLabel("ROUND 2", 40);
-		App->player->RONDA++;
+	if (SDL_GetTicks() - Time >= 4000 && !SpawnRound2) {
 		Time = SDL_GetTicks();
 		SpawnRound2 = true;
 		SpawnEnemies(2);
 	}
 
-	if (SDL_GetTicks() - Time >= 4000 && !SpawnRound3) { //ROUND3
-		rounds->ChangeLabel("ROUND 3", 40);
-		App->player->RONDA++;
+	if (SDL_GetTicks() - Time >= 4000 && !SpawnRound3) { //ULITMA OLEADA DE LA RONDA 1
 		Time = SDL_GetTicks();
 		SpawnRound3 = true;
 		SpawnEnemies(3);
