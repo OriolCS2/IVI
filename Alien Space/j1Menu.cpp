@@ -185,7 +185,7 @@ Animation j1Menu::LoadGigantAliensAnimations(int playernumber, pugi::xml_node& c
 void j1Menu::CreateIntro()
 {
 	Background = App->ui_manager->CreateImage(0, 0, false);
-	Background->SetSpritesData({ 0,1158,1024,768 });
+	Background->SetSpritesData({ 0,1158,1024,900 });
 	Title = App->ui_manager->CreateImage((App->win->width / 2) - (354 / 2), 70, false);
 	Title->SetSpritesData({ 0,783,354,305 });
 	sentence = App->ui_manager->CreateImage((App->win->width / 2) - (268 / 2), 550, false);
@@ -198,9 +198,9 @@ void j1Menu::CreateMainMenu()
 	MainTitle = App->ui_manager->CreateImage((App->win->width / 2) - (844 / 2), 70, false);
 	MainTitle->SetSpritesData({ 401,784,844	,165 });
 	MainTitle->type = BUTTON;
-	buttonSTART = App->ui_manager->CreateButton(160, 370, 1, nullptr, "START", 30);
-	buttonSETTINGS = App->ui_manager->CreateButton(160, 470, 1, nullptr, "SETTINGS", 30);
-	buttonEXIT = App->ui_manager->CreateButton(160, 570, 1, nullptr, "EXIT", 30);
+	buttonSTART = App->ui_manager->CreateButton(310, 370, 1, nullptr, "START", 30);
+	buttonSETTINGS = App->ui_manager->CreateButton(310, 470, 1, nullptr, "SETTINGS", 30);
+	buttonEXIT = App->ui_manager->CreateButton(310, 570, 1, nullptr, "EXIT", 30);
 }
 
 void j1Menu::MainMenu()
