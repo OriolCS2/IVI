@@ -36,14 +36,11 @@ public:
 	// Called before quitting
 	bool CleanUp();
 
-	Animation LoadGigantAliensAnimations(int playernumber, pugi::xml_node&, p2SString NameAnim) const;
 	void MainMenu();
 	void CreateMainMenu();
-	void SettingsMenu(float dt);
-	void CreateSettingsButtons();
 	void CreateIntro();
 	void WantToDisappearMainMenu(bool Disappear);
-
+;
 
 public:
 
@@ -98,30 +95,9 @@ public:
 
 	//INITIAL MENU
 	UI_Element* MainTitle = nullptr;
-	UI_Element* buttonSTART = nullptr;
-	UI_Element* buttonSETTINGS = nullptr;
+	UI_Element* buttonSTARTControls1 = nullptr;
+	UI_Element* buttonSTARTControls2 = nullptr;
 	UI_Element* buttonEXIT = nullptr;
-
-
-	//SETTINGS
-	UI_Element* buttonGOBACKSETTINGS = nullptr;
-	UI_Element* imageSETTINGS = nullptr;
-	UI_Element* checkboxFPS = nullptr;
-	UI_Element* labelFPS = nullptr;
-	SDL_Texture* Settings = nullptr;
-	UI_Element* sliderVOLUMEMUSIC = nullptr;
-	UI_Element* labelMUSICVOLUME = nullptr;
-	UI_Element* sliderVOLUMEFX = nullptr;
-	UI_Element* labelSETTINGS = nullptr;
-	UI_Element* labelVOLUMEFX = nullptr;
-	UI_Element* labelGODMODE = nullptr;
-	UI_Element* checkboxGODMODE = nullptr;
-	UI_Element* sliderGENERALSOUND = nullptr;
-	UI_Element* labelGENERALSOUND = nullptr;
-	UI_Element* checkboxSOUND = nullptr;
-	UI_Element* labelSOUND = nullptr;
-	int x = 170;
-	int y = 950;
 
 	//PLAYER UI
 

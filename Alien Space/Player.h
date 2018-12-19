@@ -66,6 +66,7 @@ public:
 	int XML_RONDA = -10;
 	p2SString Estadisticas;
 	iPoint mouseposition;
+	bool Controls = false;
 };
 
 

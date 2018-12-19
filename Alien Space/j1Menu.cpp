@@ -45,9 +45,6 @@ bool j1Menu::Awake(pugi::xml_node& config)
 	PlayerNumber3 = config.child("PlayerNumber3").attribute("value").as_int();
 	ChooseFx= config.child("ChooseFx").text().as_string();
 	IntroFx = config.child("IntroFx").text().as_string();
-
-
-
 	
 	bool ret = true;
 
@@ -66,13 +63,12 @@ bool j1Menu::Start()
 	App->render->camera.y = 0;
 	start = false;
 
+	App->player->Controls = false;
 
 	ScreenStart = App->tex->Load(file_texture.GetString());
-	Settings = App->tex->Load("textures/Settings.png");
 	choosefx = App->audio->LoadFx(ChooseFx.GetString());
 	introfx = App->audio->LoadFx(IntroFx.GetString());
 	CreateMainMenu();
-	CreateSettingsButtons();
 	CreateIntro();
 	WantToDisappearMainMenu(true);
 	App->player->EnemiesKilled = 0;
@@ -91,8 +87,6 @@ bool j1Menu::PreUpdate()
 		App->ui_manager->DeleteUI_Element(Title);
 		App->ui_manager->DeleteUI_Element(sentence);
 		WantToDisappearMainMenu(false);
-		buttonSETTINGS->NoUse = true;
-		buttonSETTINGS->WantToRender = false;
 		//CreateMainMenuButtons();
 		//CreateButtons();
 	}
@@ -105,8 +99,6 @@ bool j1Menu::Update(float dt)
 	BROFILER_CATEGORY("Menu: Update", Profiler::Color::Aquamarine);
 	if (start) {
 		if (!GameOn) {
-			if (InSettings)
-				SettingsMenu(dt);
 			if (InMainMenu)
 				MainMenu();
 		}
@@ -167,33 +159,29 @@ void j1Menu::CreateMainMenu()
 	MainTitle = App->ui_manager->CreateImage((App->win->width / 2) - (844 / 2), 70, false);
 	MainTitle->SetSpritesData({ 401,784,844	,165 });
 	MainTitle->type = BUTTON;
-	buttonSTART = App->ui_manager->CreateButton(310, 370, 1, nullptr, "START", 30);
-	buttonSETTINGS = App->ui_manager->CreateButton(310, 470, 1, nullptr, "SETTINGS", 30);
+	buttonSTARTControls1 = App->ui_manager->CreateButton(310, 370, 1, nullptr, "CONTROLS 1", 30);
+	buttonSTARTControls2 = App->ui_manager->CreateButton(310, 470, 1, nullptr, "CONTROLS 2", 30);
 	buttonEXIT = App->ui_manager->CreateButton(310, 570, 1, nullptr, "EXIT", 30);
 }
 
 void j1Menu::MainMenu()
 {
-	if (buttonSTART->pressed) {
+	if (buttonSTARTControls1->pressed) {
+		App->fade->FadeToBlack(3.0f);
+		WantToDisappearMainMenu(true);
+		InMainMenu = false;
+		GoStart = true;
+		App->player->Controls = true;
+		SDL_ShowCursor(SDL_DISABLE);
+	}
+	if ( buttonSTARTControls2->pressed) {
 		App->fade->FadeToBlack(3.0f);
 		WantToDisappearMainMenu(true);
 		InMainMenu = false;
 		GoStart = true;
 		SDL_ShowCursor(SDL_DISABLE);
 	}
-	if (buttonSETTINGS->pressed) {
-		SettingMenuDone = false;
-		Positioned = false;
-		buttonSTART->NoUse = true;
-		buttonSETTINGS->NoUse = true;
-		buttonEXIT->NoUse = true;
-		InMainMenu = false;
-		InSettings = true;
-		if (App->capactivated)
-			checkboxFPS->pressed = true;
-		else checkboxFPS->pressed = false;
 
-	}
 	if (buttonEXIT->pressed) {
 		Exit = true;
 	}
@@ -203,131 +191,24 @@ void j1Menu::MainMenu()
 void j1Menu::WantToDisappearMainMenu(bool Disappear)
 {
 	if (Disappear) {
-		buttonSTART->NoUse = true;
-		buttonSETTINGS->NoUse = true;
+		buttonSTARTControls1->NoUse = true;
+		buttonSTARTControls2->NoUse = true;
 		buttonEXIT->NoUse = true;
-		buttonSTART->WantToRender = false;
-		buttonSETTINGS->WantToRender = false;
+		buttonSTARTControls1->WantToRender = false;
+		buttonSTARTControls2->WantToRender = false;
 		buttonEXIT->WantToRender = false;
 		MainTitle->WantToRender = false;
 	}
 	else {
-		buttonSTART->NoUse = false;
-		buttonSETTINGS->NoUse = false;
+		buttonSTARTControls1->NoUse = false;
+		buttonSTARTControls2->NoUse = false;
 		buttonEXIT->NoUse = false;
-		buttonSTART->WantToRender = true;
-		buttonSETTINGS->WantToRender = true;
+		buttonSTARTControls1->WantToRender = true;
+		buttonSTARTControls2->WantToRender = true;
 		buttonEXIT->WantToRender = true;
 		MainTitle->WantToRender = true;
 	}
 }
-
-
-
-
-
-
-void j1Menu::CreateSettingsButtons()
-{
-	SettingMenuDone = false;
-	imageSETTINGS = App->ui_manager->CreateImage(170, 1000, true);
-	imageSETTINGS->SetSpritesData({ 758,0,705,671 });
-	imageSETTINGS->type = BUTTON;
-	buttonGOBACKSETTINGS = App->ui_manager->CreateButton(37, 40, 3, imageSETTINGS);
-	buttonGOBACKSETTINGS->SetSpritesData({ 559,0,39,31 }, { 652,0,39,31 }, { 608,0,39,28 });
-	checkboxFPS = App->ui_manager->CreateCheckBox(380, 157, imageSETTINGS);
-	labelFPS = App->ui_manager->CreateLabel(100, 150, "CAP FPS TO 30", 50, true, imageSETTINGS);
-	sliderVOLUMEMUSIC = App->ui_manager->CreateSlider(380, 452, App->audio->volume, imageSETTINGS);
-	labelMUSICVOLUME = App->ui_manager->CreateLabel(100, 450, "MUSIC VOLUME", 50, true, imageSETTINGS);
-	sliderVOLUMEFX = App->ui_manager->CreateSlider(380, 552, App->audio->fxvolume, imageSETTINGS);
-	labelVOLUMEFX = App->ui_manager->CreateLabel(100, 550, "FX VOLUME", 50, true, imageSETTINGS);
-	labelSETTINGS = App->ui_manager->CreateLabel(imageSETTINGS->width / 2, 50, "SETTINGS", 60, true, imageSETTINGS);
-	labelSETTINGS->Local_pos.x -= labelSETTINGS->width / 2;
-	labelGENERALSOUND = App->ui_manager->CreateLabel(100, 350, "GENERAL SOUND", 50, true, imageSETTINGS);
-	sliderGENERALSOUND = App->ui_manager->CreateSlider(380, 352, 50, imageSETTINGS);
-	checkboxSOUND = App->ui_manager->CreateCheckBox(380, 257, imageSETTINGS);
-	if (!App->audio->NoAudio)
-		checkboxSOUND->pressed = true;
-	else checkboxSOUND->pressed = false;
-	labelSOUND = App->ui_manager->CreateLabel(100, 250, "SOUND", 50, true, imageSETTINGS);
-	if (App->capactivated)
-		checkboxFPS->pressed = true;
-}
-
-
-void j1Menu::SettingsMenu(float dt)
-{
-	Title->NoRenderLabel = true;
-	sentence->NoRenderLabel = true;
-	if (imageSETTINGS->Local_pos.y <= buttonEXIT->Local_pos.y + buttonEXIT->height) {
-		buttonEXIT->WantToRender = false;
-	}
-	if (imageSETTINGS->Local_pos.y <= buttonSETTINGS->Local_pos.y + buttonSETTINGS->height) {
-		buttonSETTINGS->WantToRender = false;
-	}
-	if (imageSETTINGS->Local_pos.y <= buttonSTART->Local_pos.y + buttonSTART->height) {
-		buttonSTART->WantToRender = false;
-	}
-	if (imageSETTINGS->Local_pos.y >= buttonEXIT->Local_pos.y) {
-		buttonEXIT->WantToRender = true;
-	}
-	if (imageSETTINGS->Local_pos.y >= buttonSETTINGS->Local_pos.y) {
-		buttonSETTINGS->WantToRender = true;
-	}
-	if (imageSETTINGS->Local_pos.y >= buttonSTART->Local_pos.y) {
-		buttonSTART->WantToRender = true;
-	}
-	if (!Positioned && !SettingMenuDone) { //MENU GOING UP
-		imageSETTINGS->Local_pos.y -= 1000 * dt;
-		if (imageSETTINGS->Local_pos.y <= 100) {
-			Positioned = true;
-			//buttonGOBACKSETTINGS->pressed = false;
-			SettingMenuDone = true;
-		}
-	}
-	if (!Positioned && SettingMenuDone) { //MENU GOING DOWN
-
-		imageSETTINGS->Local_pos.y += 2000 * dt;
-		if (imageSETTINGS->Local_pos.y >= 1225) {
-			buttonSTART->NoUse = false;
-			buttonSETTINGS->NoUse = false;
-			buttonEXIT->NoUse = false;
-			InSettings = false;
-			InMainMenu = true;
-		}
-	}
-	if (SettingMenuDone) { //MENU LOGIC BUTTONS
-		if (buttonGOBACKSETTINGS->pressed) {
-			Positioned = false;
-		}
-	
-		if (checkboxFPS->pressed) {
-			App->capactivated = true;
-		}
-		if (!checkboxFPS->pressed) {
-			App->capactivated = false;
-		}
-		if (checkboxSOUND->pressed) {
-			App->audio->NoAudio = false;
-			sliderGENERALSOUND->NoUse = false;
-			sliderVOLUMEMUSIC->NoUse = false;
-			sliderVOLUMEFX->NoUse = false;
-			App->audio->general = sliderGENERALSOUND->Value;
-			App->audio->volume = sliderVOLUMEMUSIC->Value;
-			App->audio->fxvolume = sliderVOLUMEFX->Value;
-		}
-		else {
-			App->audio->NoAudio = true;
-			sliderGENERALSOUND->NoUse = true;
-			sliderVOLUMEMUSIC->NoUse = true;
-			sliderVOLUMEFX->NoUse = true;
-		}
-	}
-}
-
-
-
-
 
 
 

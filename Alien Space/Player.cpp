@@ -64,7 +64,10 @@ bool Player::Update(float dt)
 	BROFILER_CATEGORY("Player: Update", Profiler::Color::Green);
 	DT = dt;
 
-	Controls2();
+	if (Controls)
+		Controls1();
+	else
+		Controls2();
 
 	App->render->Blit(texture, position.x, position.y, &current_animation->GetCurrentFrame(dt));
 	if (!GOD) {
