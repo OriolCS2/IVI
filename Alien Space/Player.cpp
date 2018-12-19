@@ -17,7 +17,7 @@
 #include "UI_Manager.h"
 #include "ModuleEnemies.h"
 #include "Image.h"
-
+#include "j1Window.h"
 #include "Brofiler/Brofiler.h"
 
 Player::Player() : j1Module()
@@ -64,7 +64,7 @@ bool Player::Update(float dt)
 	BROFILER_CATEGORY("Player: Update", Profiler::Color::Green);
 	DT = dt;
 
-	Controls();
+	Controls2();
 
 	App->render->Blit(texture, position.x, position.y, &current_animation->GetCurrentFrame(dt));
 	if (!GOD) {
@@ -161,9 +161,8 @@ void Player::OnCollision(Collider* c1, Collider* c2) //this determine what happe
 
 }
 
-void Player::Controls()
+void Player::Controls1()
 {
-
 	if (position.x >= -App->render->camera.x + 9) {
 		if (App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT) {
 			position.x -= 400 * DT;
@@ -204,9 +203,39 @@ void Player::Controls()
 		Time = SDL_GetTicks();
 		App->particles->AddParticle(App->particles->shootH, position.x - 20, position.y + 21, COLLIDER_PARTICLE);
 	}
-
 }
 
+void Player::Controls2()
+{
+	App->input->GetMousePosition(position.x,position.y);
+
+	if (position.x >=800-42)
+		position.x =800-42;
+
+	if (position.y >= 800 - 47)
+		position.y = 800 - 47;
+
+	if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN && App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT && SDL_GetTicks() - Time >= 200 && App->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE) {
+		ShootNum++;
+		Time = SDL_GetTicks();
+		App->particles->AddParticle(App->particles->shoot, position.x + 16, position.y - 45, COLLIDER_PARTICLE);
+	}
+	if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT)==KEY_DOWN && App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT && SDL_GetTicks() - Time >= 200 && App->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE) {
+		ShootNum++;
+		Time = SDL_GetTicks();
+		App->particles->AddParticle(App->particles->shoot2, position.x + 16, position.y, COLLIDER_PARTICLE);
+	}
+	if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN && App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && SDL_GetTicks() - Time >= 200 && App->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE) {
+		ShootNum++;
+		Time = SDL_GetTicks();
+		App->particles->AddParticle(App->particles->shootH2, position.x + 32, position.y + 21, COLLIDER_PARTICLE);
+	}
+	if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN && App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && SDL_GetTicks() - Time >= 200 && App->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE) {
+		ShootNum++;
+		Time = SDL_GetTicks();
+		App->particles->AddParticle(App->particles->shootH, position.x - 20, position.y + 21, COLLIDER_PARTICLE);
+	}
+}
 void Player::StartPosition()
 {
 	position.x = -App->render->camera.x + 200;

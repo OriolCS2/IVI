@@ -39,7 +39,8 @@ public:
 	bool CleanUp();
 	void OnCollision(Collider* c1, Collider* c2);
 
-	void Controls();
+	void Controls1();
+	void Controls2();
 	void StartPosition();
 
 public:
@@ -64,6 +65,7 @@ public:
 	int RONDA = 1;
 	int XML_RONDA = -10;
 	p2SString Estadisticas;
+	iPoint mouseposition;
 };
 
 

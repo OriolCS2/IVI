@@ -150,37 +150,6 @@ bool j1Menu::CleanUp()
 	return true;
 }
 
-Animation j1Menu::LoadGigantAliensAnimations(int playernumber, pugi::xml_node& config, p2SString NameAnim) const
-{
-	p2SString XML_Name_Player_Anims;
-	SDL_Rect rect;
-	Animation anim;
-	switch (playernumber) {
-	case 0:
-		XML_Name_Player_Anims = "AnimationsPlayerYellow";
-		break;
-	case 1:
-		XML_Name_Player_Anims = "AnimationsPlayerPink";
-		break;
-	case 2:
-		XML_Name_Player_Anims = "AnimationsPlayerBlue";
-		break;
-	}
-
-	for (pugi::xml_node frames = config.child(XML_Name_Player_Anims.GetString()).child(NameAnim.GetString()).child("frame"); frames; frames = frames.next_sibling("frame")) {
-		rect.x = frames.attribute("x").as_int();
-		rect.y = frames.attribute("y").as_int();
-		rect.w = frames.attribute("w").as_int();
-		rect.h = frames.attribute("h").as_int();
-		anim.PushBack({ rect.x,rect.y,rect.w,rect.h });
-	}
-	anim.speed = config.child(XML_Name_Player_Anims.GetString()).child(NameAnim.GetString()).attribute("speed").as_float();
-	anim.loop = config.child(XML_Name_Player_Anims.GetString()).child(NameAnim.GetString()).attribute("loop").as_bool();
-
-	return anim;
-}
-
-
 //MENU
 void j1Menu::CreateIntro()
 {
@@ -210,6 +179,7 @@ void j1Menu::MainMenu()
 		WantToDisappearMainMenu(true);
 		InMainMenu = false;
 		GoStart = true;
+		SDL_ShowCursor(SDL_DISABLE);
 	}
 	if (buttonSETTINGS->pressed) {
 		SettingMenuDone = false;

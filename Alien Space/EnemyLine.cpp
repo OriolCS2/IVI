@@ -43,7 +43,6 @@ Enemy_Line::Enemy_Line(int x, int y, int direction) : Enemy(x, y) //if direction
 		break;
 	}
 	
-
 	animation = &fly;
 
 	collider = App->collision->AddCollider({ 0, 0, 41, 46 }, COLLIDER_TYPE::COLLIDER_ENEMY_BAT, (j1Module*)App->enemies);
