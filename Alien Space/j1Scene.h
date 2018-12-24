@@ -45,6 +45,8 @@ public:
 	SDL_Texture * space = nullptr;
 	bool StartRound1 = false;
 	bool StartRound2 = false;
+	bool StartRound3 = false;
+	bool StartRound4 = false;
 
 	bool SpawnRound2 = false;
 	bool SpawnRound3 = true;

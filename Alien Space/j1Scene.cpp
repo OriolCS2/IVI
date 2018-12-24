@@ -103,6 +103,33 @@ bool j1Scene::Update(float dt)
 		SpawnRound6 = false;
 		SpawnEnemies(5);
 	}
+	if (SDL_GetTicks() - Time >= 7000 && !SpawnRound6) { //OLEADA 3 RONDA 2
+		Time = SDL_GetTicks();
+		SpawnRound6 = true;
+		SpawnRound7 = false;
+		SpawnEnemies(6);
+	}
+
+	if (SDL_GetTicks() - Time >= 5000 && !SpawnRound7) { //OLEADA 1 RONDA 3
+		if (!SaveXMLROUND2) {
+			SaveXMLROUND2 = true;
+			App->player->Estadisticas.create("Estadisticas_Round_2.xml");
+			App->SaveGame(App->player->Estadisticas.GetString());
+			rounds->ChangeLabel("ROUND 3", 40);
+		}
+		StartRound2 = false;
+		StartRound3 = true;
+		Time = SDL_GetTicks();
+		SpawnRound7 = true;
+		SpawnRound8 = false;
+		SpawnEnemies(7);
+	}
+	if (SDL_GetTicks() - Time >= 4000 && !SpawnRound8) { //OLEADA 2 RONDA 3
+		Time = SDL_GetTicks();
+		SpawnRound7 = true;
+		SpawnRound8 = false;
+		SpawnEnemies(8);
+	}
 	return true;
 }
 
@@ -128,25 +155,15 @@ bool j1Scene::CleanUp()
 void j1Scene::SpawnEnemies(int Round)
 {
 
-
 	if (Round == 1) {
-		App->enemies->AddEnemy(LINE, 100, -700, 0);
-		App->enemies->AddEnemy(LINE, 400, -500, 0);
-		App->enemies->AddEnemy(LINE, 320, -900, 0);
-		App->enemies->AddEnemy(LINE, 610, -400, 0);
-		App->enemies->AddEnemy(LINE, 480, -700, 0);
+		App->enemies->AddEnemy(LINE, 700, -700, 0);
+		App->enemies->AddEnemy(LINE, 300, -500, 0);
+		App->enemies->AddEnemy(LINE, 220, -900, 0);
+		App->enemies->AddEnemy(LINE, 510, -400, 0);
+		App->enemies->AddEnemy(LINE, 280, -700, 0);
 		App->enemies->AddEnemy(LINE, 543, -650, 0);
-		App->enemies->AddEnemy(LINE, 710, -570, 0);
-		App->enemies->AddEnemy(LINE, 735, -800, 0);
-
-		App->enemies->AddEnemy(LINE, 100, -400, 0);
-		App->enemies->AddEnemy(LINE, 170, -530, 0);
-		App->enemies->AddEnemy(LINE, 260, -600, 0);
-		App->enemies->AddEnemy(LINE, 410, -830, 0);
-		App->enemies->AddEnemy(LINE, 180, -970, 0);
-		App->enemies->AddEnemy(LINE, 443, -450, 0);
-		App->enemies->AddEnemy(LINE, 510, -570, 0);
-		App->enemies->AddEnemy(LINE, 375, -640, 0);
+		App->enemies->AddEnemy(LINE, 110, -570, 0);
+		App->enemies->AddEnemy(LINE, 475, -800, 0);
 	}
 	if (Round == 2) {
 		App->enemies->AddEnemy(LINE, -400, 400, 3);
@@ -157,54 +174,27 @@ void j1Scene::SpawnEnemies(int Round)
 		App->enemies->AddEnemy(LINE, -650, 650, 3);
 		App->enemies->AddEnemy(LINE, -980, 570, 3);
 		App->enemies->AddEnemy(LINE, -1100, 100, 3);
-
-		App->enemies->AddEnemy(LINE, -490, 400, 3);
-		App->enemies->AddEnemy(LINE, -690, 330, 3);
-		App->enemies->AddEnemy(LINE, -730, 600, 3);
-		App->enemies->AddEnemy(LINE, -210, 430, 3);
-		App->enemies->AddEnemy(LINE, -1000, 270, 3);
-		App->enemies->AddEnemy(LINE, -820, 450, 3);
-		App->enemies->AddEnemy(LINE, -650, 470, 3);
-		App->enemies->AddEnemy(LINE, -890, 240, 3);
 	}
 	if (Round == 3) {
-		App->enemies->AddEnemy(LINE, 100, -700, 0);
-		App->enemies->AddEnemy(LINE, 300, -500, 0);
-		App->enemies->AddEnemy(LINE, 320, -900, 0);
-		App->enemies->AddEnemy(LINE, 210, -400, 0);
-		App->enemies->AddEnemy(LINE, 280, -700, 0);
-		App->enemies->AddEnemy(LINE, 543, -650, 0);
-		App->enemies->AddEnemy(LINE, 510, -570, 0);
-		App->enemies->AddEnemy(LINE, 475, -800, 0);
-
-		App->enemies->AddEnemy(LINE, 500, -400, 0);
-		App->enemies->AddEnemy(LINE, 670, -530, 0);
-		App->enemies->AddEnemy(LINE, 460, -600, 0);
-		App->enemies->AddEnemy(LINE, 210, -830, 0);
-		App->enemies->AddEnemy(LINE, 180, -970, 0);
-		App->enemies->AddEnemy(LINE, 343, -450, 0);
-		App->enemies->AddEnemy(LINE, 610, -570, 0);
-		App->enemies->AddEnemy(LINE, 275, -640, 0);
+		App->enemies->AddEnemy(LINE, 1000, 100, 2);
+		App->enemies->AddEnemy(LINE, 1400, 500, 2);
+		App->enemies->AddEnemy(LINE, 1320, 700, 2);
+		App->enemies->AddEnemy(LINE, 1610, 400, 2);
+		App->enemies->AddEnemy(LINE, 1480, 350, 2);
+		App->enemies->AddEnemy(LINE, 1543, 450, 2);
+		App->enemies->AddEnemy(LINE, 1210, 570, 2);
+		App->enemies->AddEnemy(LINE, 1335, 200, 2);
 	}
 
 	if (Round == 4) {
-		App->enemies->AddEnemy(LINE, 1500, 700, 1);
-		App->enemies->AddEnemy(LINE, 1300, 500, 2);
-		App->enemies->AddEnemy(LINE, -700, 500, 3);
-		App->enemies->AddEnemy(LINE, 1340, 400, 1);
-		App->enemies->AddEnemy(LINE, 1280, 200, 2);
-		App->enemies->AddEnemy(LINE, 543, -650, 0);
-		App->enemies->AddEnemy(LINE, 1410, 270, 2);
-		App->enemies->AddEnemy(LINE, 1100, 300, 1);
-
-		App->enemies->AddEnemy(LINE, 1200, 600, 2);
-		App->enemies->AddEnemy(LINE, 670, -530, 0);
-		App->enemies->AddEnemy(LINE, 460, -600, 3);
-		App->enemies->AddEnemy(LINE, -930, 340, 3);
-		App->enemies->AddEnemy(LINE, 1080, 470, 1);
-		App->enemies->AddEnemy(LINE, -810, 640, 3);
-		App->enemies->AddEnemy(LINE, 610, -570, 0);
-		App->enemies->AddEnemy(LINE, 275, -640, 0);
+		App->enemies->AddEnemy(LINE, 100, 900, 1);
+		App->enemies->AddEnemy(LINE, 400, 1000, 1);
+		App->enemies->AddEnemy(LINE, 320, 1100, 1);
+		App->enemies->AddEnemy(LINE, 610, 950, 1);
+		App->enemies->AddEnemy(LINE, 480, 1250, 1);
+		App->enemies->AddEnemy(LINE, 543, 1150, 1);
+		App->enemies->AddEnemy(LINE, 710, 1200, 1);
+		App->enemies->AddEnemy(LINE, 735, 850, 1);
 	}
 	if (Round == 5) {
 		App->enemies->AddEnemy(LINE, 1000, 700, 2);
@@ -226,8 +216,65 @@ void j1Scene::SpawnEnemies(int Round)
 		App->enemies->AddEnemy(LINE, -1375, 640, 3);
 	}
 
-	
-	
+	if (Round == 6) {
+		App->enemies->AddEnemy(LINE, 100, 900, 1);
+		App->enemies->AddEnemy(LINE, 400, 1000, 1);
+		App->enemies->AddEnemy(LINE, 320, 1100, 1);
+		App->enemies->AddEnemy(LINE, 610, 950, 1);
+		App->enemies->AddEnemy(LINE, 480, 1250, 1);
+		App->enemies->AddEnemy(LINE, 543, 1150, 1);
+		App->enemies->AddEnemy(LINE, 710, 1200, 1);
+		App->enemies->AddEnemy(LINE, 735, 850, 1);
+
+		App->enemies->AddEnemy(LINE, 700, -700, 0);
+		App->enemies->AddEnemy(LINE, 300, -500, 0);
+		App->enemies->AddEnemy(LINE, 220, -900, 0);
+		App->enemies->AddEnemy(LINE, 510, -400, 0);
+		App->enemies->AddEnemy(LINE, 280, -700, 0);
+		App->enemies->AddEnemy(LINE, 543, -650, 0);
+		App->enemies->AddEnemy(LINE, 110, -570, 0);
+		App->enemies->AddEnemy(LINE, 475, -800, 0);
+	}
+	if (Round == 7) {
+		App->enemies->AddEnemy(LINE, -200, -100, 5);
+		App->enemies->AddEnemy(LINE, 900, 900, 6);
+		App->enemies->AddEnemy(LINE, 00, -100, 5);
+		App->enemies->AddEnemy(LINE, 700, 900, 6);
+		App->enemies->AddEnemy(LINE, 200, -100, 5);
+		App->enemies->AddEnemy(LINE, 500, 900, 6);
+		App->enemies->AddEnemy(LINE, -100, -200, 5);
+		App->enemies->AddEnemy(LINE, 800, 1000, 6);
+		App->enemies->AddEnemy(LINE, 100, -200, 5);
+		App->enemies->AddEnemy(LINE, 600, 1000, 6);
+		App->enemies->AddEnemy(LINE, 300, -200, 5);
+		App->enemies->AddEnemy(LINE, 400, 1000, 6);
+		App->enemies->AddEnemy(LINE, 00, -300, 5);
+		App->enemies->AddEnemy(LINE, 700, 1100, 6);
+		App->enemies->AddEnemy(LINE, 200, -300, 5);
+		App->enemies->AddEnemy(LINE, 500, 1100, 6);
+		App->enemies->AddEnemy(LINE, 400, -300, 5);
+		App->enemies->AddEnemy(LINE, 300, 1100, 6);
+	}
+	if (Round == 8) {
+		App->enemies->AddEnemy(LINE, 900, -100, 4);
+		App->enemies->AddEnemy(LINE, -200, 900, 7);
+		App->enemies->AddEnemy(LINE, 70, -100, 4);
+		App->enemies->AddEnemy(LINE, 00, 900, 7);
+		App->enemies->AddEnemy(LINE, 500, -100, 4);
+		App->enemies->AddEnemy(LINE, 200, 900, 7);
+		App->enemies->AddEnemy(LINE, 800, -200, 4);
+		App->enemies->AddEnemy(LINE, -100, 1000, 7);
+		App->enemies->AddEnemy(LINE, 600, -200, 4);
+		App->enemies->AddEnemy(LINE, 100, 1000, 7);
+		App->enemies->AddEnemy(LINE, 400, -200, 4);
+		App->enemies->AddEnemy(LINE, 300, 1000, 7);
+		App->enemies->AddEnemy(LINE, 700, -300, 4);
+		App->enemies->AddEnemy(LINE, 00, 1100, 7);
+		App->enemies->AddEnemy(LINE, 500, -300, 4);
+		App->enemies->AddEnemy(LINE, 200, 1100, 7);
+		App->enemies->AddEnemy(LINE, 300, -300, 4);
+		App->enemies->AddEnemy(LINE, 400, 1100, 7);
+	}
 }
 
 void j1Scene::ResetRounds()
@@ -243,7 +290,7 @@ void j1Scene::ResetRounds()
 
 	StartRound1 = false;
 	StartRound2 = false;
-
+	StartRound3 = false;
 
 	SaveXML_ROUND1 = false;
 	SaveXMLROUND2 = false;
