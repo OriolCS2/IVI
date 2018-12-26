@@ -104,7 +104,10 @@ bool Player::Load(pugi::xml_node& player)
 }
 bool Player::Save(pugi::xml_node& player) const
 {
-
+	if (Controls)
+		player.append_child("Controles").append_attribute("Tipo") = "Controles_1";
+	else
+		player.append_child("Controles").append_attribute("Tipo") = "Controles_2";
 	player.append_child("Numero_De_Muertes").append_attribute("value") = NumeroDeMuertes;
 	player.append_child("Enemigos_Asesinados").append_attribute("value") = EnemiesKilled;
 	player.append_child("Numero_de_Disparos").append_attribute("value") = ShootNum;
