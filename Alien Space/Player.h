@@ -56,14 +56,14 @@ public:
 	int Time = 0;
 	int Time2 = 0;
 	int EnemiesKilled = 0;
-	int XML_enemieskilled = -10;
+	int XML_enemieskilled = 0;
 	int ShootNum = 0; 
-	int XML_ShootNum = -10;
+	int XML_ShootNum = 0;
 	bool GOD = false;
 	int NumeroDeMuertes = 0;
-	int XML_VIDA = -10;
+	int XML_VIDA = 0;
 	int RONDA = 1;
-	int XML_RONDA = -10;
+	int XML_RONDA = 0;
 	p2SString Estadisticas;
 	iPoint mouseposition;
 	bool Controls = false;
