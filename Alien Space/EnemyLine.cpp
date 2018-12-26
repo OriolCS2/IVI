@@ -70,12 +70,12 @@ void Enemy_Line::Move(float dt)
 		position.x += 300 * dt;
 		break;
 	case 4:
-		position.y += 300 * dt;
 		position.x -= 300 * dt;
+		position.y += 300 * dt;
 		break;
 	case 5:
-		position.y += 300 * dt;
 		position.x += 300 * dt;
+		position.y += 300 * dt;
 		break;
 	case 6:
 		position.x -= 300 * dt;

@@ -55,12 +55,19 @@ public:
 	bool SpawnRound6 = true;
 	bool SpawnRound7 = true;
 	bool SpawnRound8 = true;
+	bool SpawnRound9 = true;
+	bool SpawnRound10 = true;
+	bool SpawnRound11 = true;
+	bool SpawnRound12 = true;
+
 	int Time = 0;
 	p2SString Rounds;
 	UI_Element* rounds = nullptr;
 
 	bool SaveXML_ROUND1 = false;
 	bool SaveXMLROUND2 = false;
+	bool SaveXMLROUND3 = false;
+	bool SaveXMLROUND4 = false;
 
 };
 
