@@ -159,9 +159,15 @@ void j1Menu::CreateMainMenu()
 	MainTitle = App->ui_manager->CreateImage((App->win->width / 2) - (844 / 2), 70, false);
 	MainTitle->SetSpritesData({ 401,784,844	,165 });
 	MainTitle->type = BUTTON;
-	buttonSTARTControls1 = App->ui_manager->CreateButton(310, 370, 1, nullptr, "CONTROLS 1", 30);
-	buttonSTARTControls2 = App->ui_manager->CreateButton(310, 470, 1, nullptr, "CONTROLS 2", 30);
-	buttonEXIT = App->ui_manager->CreateButton(310, 570, 1, nullptr, "EXIT", 30);
+	buttonSTARTControls1 = App->ui_manager->CreateButton(150, 370, 1, nullptr, "CONTROLS 1", 30);
+	buttonSTARTControls2 = App->ui_manager->CreateButton(150, 470, 1, nullptr, "CONTROLS 2", 30);
+	buttonEXIT = App->ui_manager->CreateButton(150, 570, 1, nullptr, "EXIT", 30);
+	label2 = App->ui_manager->CreateLabel(400, 350, "MOVIMIENTO: W A S D",30,true);
+	label3 = App->ui_manager->CreateLabel(400, 380, "DISPARO: ESPACIO", 30, true);
+	label4 = App->ui_manager->CreateLabel(400, 410, "DIRECCION DISPARO: FLECHAS", 30, true);
+	label5 = App->ui_manager->CreateLabel(400, 450, "MOVIMIENTO: RATON", 30, true);
+	label6 = App->ui_manager->CreateLabel(400, 480, "DISPARO: BOTON IZQUIERDO RATON", 30, true);
+	label7 = App->ui_manager->CreateLabel(400, 510, "DIRECCION DISPARO: W A S D", 30, true);
 }
 
 void j1Menu::MainMenu()
@@ -196,6 +202,12 @@ void j1Menu::WantToDisappearMainMenu(bool Disappear)
 		buttonEXIT->NoUse = true;
 		buttonSTARTControls1->WantToRender = false;
 		buttonSTARTControls2->WantToRender = false;
+		label2->WantToRender = false;
+		label3->WantToRender = false;
+		label4->WantToRender = false;
+		label5->WantToRender = false;
+		label6->WantToRender = false;
+		label7->WantToRender = false;
 		buttonEXIT->WantToRender = false;
 		MainTitle->WantToRender = false;
 	}
@@ -205,6 +217,12 @@ void j1Menu::WantToDisappearMainMenu(bool Disappear)
 		buttonEXIT->NoUse = false;
 		buttonSTARTControls1->WantToRender = true;
 		buttonSTARTControls2->WantToRender = true;
+		label2->WantToRender = true;
+		label3->WantToRender = true;
+		label4->WantToRender = true;
+		label5->WantToRender = true;
+		label6->WantToRender = true;
+		label7->WantToRender = true;
 		buttonEXIT->WantToRender = true;
 		MainTitle->WantToRender = true;
 	}

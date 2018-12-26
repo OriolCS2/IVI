@@ -103,6 +103,12 @@ public:
 
 	UI_Element* image = nullptr;
 	UI_Element* label = nullptr;
+	UI_Element* label2 = nullptr;
+	UI_Element* label3 = nullptr;
+	UI_Element* label4 = nullptr;
+	UI_Element* label5 = nullptr;
+	UI_Element* label6 = nullptr;
+	UI_Element* label7 = nullptr;
 
 	// 
 	
