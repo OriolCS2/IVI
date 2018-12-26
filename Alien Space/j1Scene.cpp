@@ -90,7 +90,10 @@ bool j1Scene::Update(float dt)
 			float J = App->player->EnemiesKilled;
 			float H = App->player->ShootNum;
 			App->player->Porcentaje = (J / H) * 100;
-			App->player->Estadisticas.create("Estadisticas_Round_1.xml");
+			if (App->player->Controls)
+				App->player->Estadisticas.create("EstadisticasControles_1_Round_1.xml");
+			else
+				App->player->Estadisticas.create("EstadisticasControles_2_Round_1.xml");
 			App->SaveGame(App->player->Estadisticas.GetString());
 			rounds->ChangeLabel("ROUND 2", 40);
 		}
@@ -121,7 +124,10 @@ bool j1Scene::Update(float dt)
 			float J = App->player->EnemiesKilled;
 			float H = App->player->ShootNum;
 			App->player->Porcentaje = (J / H) * 100;
-			App->player->Estadisticas.create("Estadisticas_Round_2.xml");
+			if (App->player->Controls)
+				App->player->Estadisticas.create("EstadisticasControles_1_Round_2.xml");
+			else
+				App->player->Estadisticas.create("EstadisticasControles_2_Round_2.xml");
 			App->SaveGame(App->player->Estadisticas.GetString());
 			rounds->ChangeLabel("ROUND 3", 40);
 		}
@@ -152,7 +158,10 @@ bool j1Scene::Update(float dt)
 			float J = App->player->EnemiesKilled;
 			float H = App->player->ShootNum;
 			App->player->Porcentaje = (J / H) * 100;
-			App->player->Estadisticas.create("Estadisticas_Round_3.xml");
+			if (App->player->Controls)
+				App->player->Estadisticas.create("EstadisticasControles_1_Round_3.xml");
+			else
+				App->player->Estadisticas.create("EstadisticasControles_2_Round_3.xml");
 			App->SaveGame(App->player->Estadisticas.GetString());
 			rounds->ChangeLabel("ROUND 4", 40);
 		}
@@ -182,8 +191,25 @@ bool j1Scene::Update(float dt)
 		float J = App->player->EnemiesKilled;
 		float H = App->player->ShootNum;
 		App->player->Porcentaje = (J / H) * 100;
-		App->player->Estadisticas.create("Estadisticas_Round_4.xml");
+		if (App->player->Controls)
+			App->player->Estadisticas.create("EstadisticasControles_1_Round_4.xml");
+		else
+			App->player->Estadisticas.create("EstadisticasControles_2_Round_4.xml");
 		App->SaveGame(App->player->Estadisticas.GetString());
+		App->enemies->DeleteEnemies();
+		App->menu->InMainMenu = true;
+		App->menu->GoStart = false;
+		App->scene->active = false;
+		App->collision->active = false;
+		App->menu->start = true;
+		App->menu->GameOn = false;
+		App->menu->Start();
+		App->player->ShootNum = 0;
+		App->player->NumeroDeMuertes = 0;
+		App->player->EnemiesKilled = 0;
+		App->ui_manager->DeleteUI_Element(App->scene->rounds);
+		SDL_ShowCursor(SDL_ENABLE);
+		
 	}
 	return true;
 }
