@@ -119,26 +119,7 @@ bool Player::CleanUp()
 
 void Player::OnCollision(Collider* c1, Collider* c2) //this determine what happens when the player touch a type of collider
 {
-	/*++NumeroDeMuertes;
-	XML_VIDA = NumeroDeMuertes;
-	XML_enemieskilled = EnemiesKilled;
-	XML_ShootNum = ShootNum;
-	XML_RONDA = RONDA;
-	Estadisticas.create("Estadisticas_%i.xml", NumeroDeMuertes);
-	App->SaveGame(Estadisticas.GetString());
 
-	App->enemies->DeleteEnemies();
-	App->menu->InMainMenu = true;
-	App->menu->GoStart = false;
-	App->scene->active = false;
-	App->collision->active = false;
-	App->menu->buttonSTART->pressed = false;
-	App->menu->start = true;
-	App->menu->GameOn = false;
-	App->menu->Start();
-	ShootNum = 0;
-	App->ui_manager->DeleteUI_Element(App->scene->rounds);
-	*/
 
 	++NumeroDeMuertes;
 	XML_VIDA = NumeroDeMuertes;
@@ -153,13 +134,31 @@ void Player::OnCollision(Collider* c1, Collider* c2) //this determine what happe
 		CleanUp();
 		Start();
 		App->scene->SpawnRound2 = false;
-		App->scene->SpawnRound3 = false;
+		App->scene->SpawnRound3 = true;
 	}
 	if (App->scene->StartRound2) {
 		App->scene->Time = SDL_GetTicks();
 		CleanUp();
 		Start();
 		App->scene->SpawnRound4 = false;
+		App->scene->SpawnRound5 = true;
+		App->scene->SpawnRound6 = true;
+	}
+	if (App->scene->StartRound3) {
+		App->scene->Time = SDL_GetTicks();
+		CleanUp();
+		Start();
+		App->scene->SpawnRound7 = false;
+		App->scene->SpawnRound8 = true;
+		App->scene->SpawnRound9 = true;
+	}
+	if (App->scene->StartRound4) {
+		App->scene->Time = SDL_GetTicks();
+		CleanUp();
+		Start();
+		App->scene->SpawnRound10 = false;
+		App->scene->SpawnRound11 = true;
+		App->scene->SpawnRound12 = true;
 	}
 
 }

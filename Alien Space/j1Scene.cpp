@@ -111,6 +111,7 @@ bool j1Scene::Update(float dt)
 		SpawnEnemies(6);
 	}
 
+	//RONDA 3
 	if (SDL_GetTicks() - Time >= 5000 && !SpawnRound7) { //OLEADA 1 RONDA 3
 		if (!SaveXMLROUND2) {
 			SaveXMLROUND2 = true;
@@ -138,6 +139,7 @@ bool j1Scene::Update(float dt)
 		SpawnEnemies(9);
 	}
 
+	//RONDA 4
 	if (SDL_GetTicks() - Time >= 3000 && !SpawnRound10) { //OLEADA 1 RONDA 4
 		if (!SaveXMLROUND3) {
 			SaveXMLROUND3 = true;
@@ -161,7 +163,15 @@ bool j1Scene::Update(float dt)
 	if (SDL_GetTicks() - Time >= 3000 && !SpawnRound12) { //OLEADA 3 RONDA 4
 		Time = SDL_GetTicks();
 		SpawnRound12 = true;
+		CanFinish = true;
 		SpawnEnemies(12);
+	}
+	if (SDL_GetTicks() - Time >= 3000 && CanFinish) { 
+		Time = SDL_GetTicks();
+		SpawnRound12 = false;
+		CanFinish = false;
+		App->player->Estadisticas.create("Estadisticas_Round_4.xml");
+		App->SaveGame(App->player->Estadisticas.GetString());
 	}
 	return true;
 }
@@ -394,7 +404,7 @@ void j1Scene::ResetRounds()
 	StartRound2 = false;
 	StartRound3 = false;
 	StartRound4 = false;
-
+	CanFinish = false;
 	SaveXML_ROUND1 = false;
 	SaveXMLROUND2 = false;
 	SaveXMLROUND3 = false;

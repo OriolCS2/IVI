@@ -60,6 +60,8 @@ public:
 	bool SpawnRound11 = true;
 	bool SpawnRound12 = true;
 
+	bool CanFinish = false;
+
 	int Time = 0;
 	p2SString Rounds;
 	UI_Element* rounds = nullptr;
