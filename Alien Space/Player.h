@@ -67,6 +67,7 @@ public:
 	p2SString Estadisticas;
 	iPoint mouseposition;
 	bool Controls = false;
+	unsigned int shoot;
 };
 
 

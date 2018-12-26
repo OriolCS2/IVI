@@ -49,7 +49,7 @@ bool Player::Start()
 
 	current_animation = &Idle;
 
-	
+	shoot=App->audio->LoadFx("audio/fx/Laser.wav");
 
 	return ret;
 }
@@ -188,21 +188,25 @@ void Player::Controls1()
 	}
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->input->GetKey(SDL_SCANCODE_UP) == KEY_REPEAT && SDL_GetTicks() - Time >= 200 && App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_IDLE) {
 		ShootNum++;
+		App->audio->PlayFx(shoot);
 		Time = SDL_GetTicks();
 		App->particles->AddParticle(App->particles->shoot, position.x + 16, position.y - 45, COLLIDER_PARTICLE);
 	}
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_REPEAT && SDL_GetTicks() - Time >= 200 && App->input->GetKey(SDL_SCANCODE_UP) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_IDLE) {
 		ShootNum++;
+		App->audio->PlayFx(shoot);
 		Time = SDL_GetTicks();
 		App->particles->AddParticle(App->particles->shoot2, position.x + 16, position.y, COLLIDER_PARTICLE);
 	}
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_REPEAT && SDL_GetTicks() - Time >= 200 && App->input->GetKey(SDL_SCANCODE_UP) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_IDLE) {
 		ShootNum++;
+		App->audio->PlayFx(shoot);
 		Time = SDL_GetTicks();
 		App->particles->AddParticle(App->particles->shootH2, position.x + 32, position.y + 21, COLLIDER_PARTICLE);
 	}
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && App->input->GetKey(SDL_SCANCODE_LEFT) == KEY_REPEAT && SDL_GetTicks() - Time >= 200 && App->input->GetKey(SDL_SCANCODE_UP) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_RIGHT) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_DOWN) == KEY_IDLE) {
 		ShootNum++;
+		App->audio->PlayFx(shoot);
 		Time = SDL_GetTicks();
 		App->particles->AddParticle(App->particles->shootH, position.x - 20, position.y + 21, COLLIDER_PARTICLE);
 	}
@@ -220,21 +224,25 @@ void Player::Controls2()
 
 	if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN && App->input->GetKey(SDL_SCANCODE_W) == KEY_REPEAT && SDL_GetTicks() - Time >= 200 && App->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE) {
 		ShootNum++;
+		App->audio->PlayFx(shoot);
 		Time = SDL_GetTicks();
 		App->particles->AddParticle(App->particles->shoot, position.x + 16, position.y - 45, COLLIDER_PARTICLE);
 	}
 	if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT)==KEY_DOWN && App->input->GetKey(SDL_SCANCODE_S) == KEY_REPEAT && SDL_GetTicks() - Time >= 200 && App->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE) {
 		ShootNum++;
+		App->audio->PlayFx(shoot);
 		Time = SDL_GetTicks();
 		App->particles->AddParticle(App->particles->shoot2, position.x + 16, position.y, COLLIDER_PARTICLE);
 	}
 	if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN && App->input->GetKey(SDL_SCANCODE_D) == KEY_REPEAT && SDL_GetTicks() - Time >= 200 && App->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_A) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE) {
 		ShootNum++;
+		App->audio->PlayFx(shoot);
 		Time = SDL_GetTicks();
 		App->particles->AddParticle(App->particles->shootH2, position.x + 32, position.y + 21, COLLIDER_PARTICLE);
 	}
 	if (App->input->GetMouseButtonDown(SDL_BUTTON_LEFT) == KEY_DOWN && App->input->GetKey(SDL_SCANCODE_A) == KEY_REPEAT && SDL_GetTicks() - Time >= 200 && App->input->GetKey(SDL_SCANCODE_W) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_D) == KEY_IDLE && App->input->GetKey(SDL_SCANCODE_S) == KEY_IDLE) {
 		ShootNum++;
+		App->audio->PlayFx(shoot);
 		Time = SDL_GetTicks();
 		App->particles->AddParticle(App->particles->shootH, position.x - 20, position.y + 21, COLLIDER_PARTICLE);
 	}

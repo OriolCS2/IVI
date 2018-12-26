@@ -10,7 +10,7 @@
 #include "Player.h"
 #include "PathFindingShip.h"
 #include "EnemyLine.h"
-
+#include "j1Audio.h"
 
 
 
@@ -31,7 +31,7 @@ bool ModuleEnemies::Start()
 {
 	// Create a prototype for each enemy available so we can copy them around
 	sprites = App->tex->Load("textures/starshipdark.png");
-
+	exp = App->audio->LoadFx("audio/fx/Enemy_Explosion.wav");
 
 	return true;
 }
@@ -167,6 +167,7 @@ void ModuleEnemies::OnCollision(Collider* c1, Collider* c2)
 			case LINE:
 				App->player->EnemiesKilled++;
 				enemies[i]->OnCollision(c2);
+				App->audio->PlayFx(exp);
 				delete enemies[i];
 				enemies[i] = nullptr;
 				break;

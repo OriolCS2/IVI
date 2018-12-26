@@ -43,7 +43,8 @@ bool j1Scene::Start()
 {
 	BROFILER_CATEGORY("Scene: Start", Profiler::Color::LightYellow);
 	space = App->tex->Load("textures/space.png");
-	
+	App->audio->PlayMusic("audio/music/Space Cube.ogg");
+
 	return true;
 }
 
