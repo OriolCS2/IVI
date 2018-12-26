@@ -2,5 +2,6 @@
 <ESTADISTICAS_DEL_JUGADOR>
 	<Numero_De_Muertes value="0" />
 	<Enemigos_Asesinados value="17" />
-	<Numero_de_Disparos value="33" />
+	<Numero_de_Disparos value="35" />
+	<Porcentaje_Disparos_Acertados value="48.5714302" />
 </ESTADISTICAS_DEL_JUGADOR>

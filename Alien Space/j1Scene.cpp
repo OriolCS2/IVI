@@ -87,6 +87,9 @@ bool j1Scene::Update(float dt)
 	if (SDL_GetTicks() - Time >= 5000 && !SpawnRound4) { //OLEADA 1 RONDA 2
 		if (!SaveXML_ROUND1) {
 			SaveXML_ROUND1 = true;
+			float J = App->player->EnemiesKilled;
+			float H = App->player->ShootNum;
+			App->player->Porcentaje = (J / H) * 100;
 			App->player->Estadisticas.create("Estadisticas_Round_1.xml");
 			App->SaveGame(App->player->Estadisticas.GetString());
 			rounds->ChangeLabel("ROUND 2", 40);
@@ -115,6 +118,9 @@ bool j1Scene::Update(float dt)
 	if (SDL_GetTicks() - Time >= 5000 && !SpawnRound7) { //OLEADA 1 RONDA 3
 		if (!SaveXMLROUND2) {
 			SaveXMLROUND2 = true;
+			float J = App->player->EnemiesKilled;
+			float H = App->player->ShootNum;
+			App->player->Porcentaje = (J / H) * 100;
 			App->player->Estadisticas.create("Estadisticas_Round_2.xml");
 			App->SaveGame(App->player->Estadisticas.GetString());
 			rounds->ChangeLabel("ROUND 3", 40);
@@ -143,6 +149,9 @@ bool j1Scene::Update(float dt)
 	if (SDL_GetTicks() - Time >= 3000 && !SpawnRound10) { //OLEADA 1 RONDA 4
 		if (!SaveXMLROUND3) {
 			SaveXMLROUND3 = true;
+			float J = App->player->EnemiesKilled;
+			float H = App->player->ShootNum;
+			App->player->Porcentaje = (J / H) * 100;
 			App->player->Estadisticas.create("Estadisticas_Round_3.xml");
 			App->SaveGame(App->player->Estadisticas.GetString());
 			rounds->ChangeLabel("ROUND 4", 40);
@@ -170,6 +179,9 @@ bool j1Scene::Update(float dt)
 		Time = SDL_GetTicks();
 		SpawnRound12 = false;
 		CanFinish = false;
+		float J = App->player->EnemiesKilled;
+		float H = App->player->ShootNum;
+		App->player->Porcentaje = (J / H) * 100;
 		App->player->Estadisticas.create("Estadisticas_Round_4.xml");
 		App->SaveGame(App->player->Estadisticas.GetString());
 	}

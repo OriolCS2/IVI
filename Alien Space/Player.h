@@ -56,6 +56,7 @@ public:
 	int Time = 0;
 	int Time2 = 0;
 	int EnemiesKilled = 0;
+	float Porcentaje = 0;
 	int XML_enemieskilled = 0;
 	int ShootNum = 0; 
 	int XML_ShootNum = 0;

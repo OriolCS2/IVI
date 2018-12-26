@@ -108,7 +108,7 @@ bool Player::Save(pugi::xml_node& player) const
 	player.append_child("Numero_De_Muertes").append_attribute("value") = NumeroDeMuertes;
 	player.append_child("Enemigos_Asesinados").append_attribute("value") = EnemiesKilled;
 	player.append_child("Numero_de_Disparos").append_attribute("value") = ShootNum;
-
+	player.append_child("Porcentaje_Disparos_Acertados").append_attribute("value") = Porcentaje;
 
 	return true;
 }
