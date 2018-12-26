@@ -107,7 +107,7 @@ bool j1Particles::Update(float dt)
 
 		if (p == nullptr)
 			continue;
-
+		
 		if (p->Update() == false)
 		{
 			delete p;
@@ -121,8 +121,13 @@ bool j1Particles::Update(float dt)
 				p->fx_played = true;
 			}
 		}
-	}
+		if (App->player->DestroyP) {
+			delete p;
+			active[i] = nullptr;
+		}
 
+	}
+	App->player->DestroyP = false;
 	return true;
 }
 
