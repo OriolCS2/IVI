@@ -86,9 +86,9 @@ bool j1Scene::Update(float dt)
 			float H = App->player->ShootNum;
 			App->player->Porcentaje = (J / H) * 100;
 			if (App->player->Controls)
-				App->player->Estadisticas.create("EstadisticasControles_1_Round_1.xml");
+				App->player->Estadisticas.create("Archivos a enviar/EstadisticasControles_1_Round_1.xml");
 			else
-				App->player->Estadisticas.create("EstadisticasControles_2_Round_1.xml");
+				App->player->Estadisticas.create("Archivos a enviar/EstadisticasControles_2_Round_1.xml");
 			App->SaveGame(App->player->Estadisticas.GetString());
 			rounds->ChangeLabel("ROUND 2", 40);
 		}
@@ -120,9 +120,9 @@ bool j1Scene::Update(float dt)
 			float H = App->player->ShootNum;
 			App->player->Porcentaje = (J / H) * 100;
 			if (App->player->Controls)
-				App->player->Estadisticas.create("EstadisticasControles_1_Round_2.xml");
+				App->player->Estadisticas.create("Archivos a enviar/EstadisticasControles_1_Round_2.xml");
 			else
-				App->player->Estadisticas.create("EstadisticasControles_2_Round_2.xml");
+				App->player->Estadisticas.create("Archivos a enviar/EstadisticasControles_2_Round_2.xml");
 			App->SaveGame(App->player->Estadisticas.GetString());
 			rounds->ChangeLabel("ROUND 3", 40);
 		}
@@ -154,9 +154,9 @@ bool j1Scene::Update(float dt)
 			float H = App->player->ShootNum;
 			App->player->Porcentaje = (J / H) * 100;
 			if (App->player->Controls)
-				App->player->Estadisticas.create("EstadisticasControles_1_Round_3.xml");
+				App->player->Estadisticas.create("Archivos a enviar/EstadisticasControles_1_Round_3.xml");
 			else
-				App->player->Estadisticas.create("EstadisticasControles_2_Round_3.xml");
+				App->player->Estadisticas.create("Archivos a enviar/EstadisticasControles_2_Round_3.xml");
 			App->SaveGame(App->player->Estadisticas.GetString());
 			rounds->ChangeLabel("ROUND 4", 40);
 		}
@@ -187,9 +187,9 @@ bool j1Scene::Update(float dt)
 		float H = App->player->ShootNum;
 		App->player->Porcentaje = (J / H) * 100;
 		if (App->player->Controls)
-			App->player->Estadisticas.create("EstadisticasControles_1_Round_4.xml");
+			App->player->Estadisticas.create("Archivos a enviar/EstadisticasControles_1_Round_4.xml");
 		else
-			App->player->Estadisticas.create("EstadisticasControles_2_Round_4.xml");
+			App->player->Estadisticas.create("Archivos a enviar/EstadisticasControles_2_Round_4.xml");
 
 		App->SaveGame(App->player->Estadisticas.GetString());
 		App->enemies->DeleteEnemies();
