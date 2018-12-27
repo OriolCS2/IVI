@@ -8,7 +8,6 @@
 #include "SDL_mixer\include\SDL_mixer.h"
 #pragma comment( lib, "SDL_mixer/libx86/SDL2_mixer.lib" )
 
-#include "Brofiler/Brofiler.h"
 
 j1Audio::j1Audio() : j1Module()
 {
@@ -142,7 +141,6 @@ bool j1Audio::PlayMusic(const char* path, float fade_time)
 
 bool j1Audio::Update(float dt)
 {
-	BROFILER_CATEGORY("Audio: Update", Profiler::Color::Aquamarine);
 	if (App->input->GetKey(SDL_SCANCODE_KP_PLUS) == KEY_REPEAT)
 	{
 		volume ++;

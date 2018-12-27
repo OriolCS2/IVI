@@ -22,8 +22,6 @@
 #include "p2Point.h"
 #include "ModuleEnemies.h"
 
-#include "Brofiler/Brofiler.h"
-
 // Constructor
 j1App::j1App(int argc, char* args[]) : argc(argc), args(args)
 {
@@ -149,7 +147,6 @@ bool j1App::Awake()
 // Called before the first frame
 bool j1App::Start()
 {
-	BROFILER_CATEGORY("App: Start", Profiler::Color::PeachPuff);
 	PERF_START(ptimer);
 	bool ret = true;
 	p2List_item<j1Module*>* item;
@@ -171,7 +168,6 @@ bool j1App::Start()
 // Called each loop iteration
 bool j1App::Update()
 {
-	BROFILER_CATEGORY("App: Update", Profiler::Color::PeachPuff);
 	bool ret = true;
 	PrepareUpdate();
 
@@ -217,7 +213,6 @@ pugi::xml_node j1App::LoadConfig(pugi::xml_document& config_file, char* file) co
 // ---------------------------------------------
 void j1App::PrepareUpdate()
 {
-	BROFILER_CATEGORY("App: PrepareUpdate", Profiler::Color::PeachPuff);
 	frame_count++;
 	last_sec_frame_count++;
 	dt = frame_time.ReadSec();
@@ -229,7 +224,6 @@ void j1App::PrepareUpdate()
 // ---------------------------------------------
 void j1App::FinishUpdate()
 {
-	BROFILER_CATEGORY("App: FinishUpdate", Profiler::Color::PeachPuff);
 	if (want_to_save == true)
 		SavegameNow();
 
@@ -283,7 +277,6 @@ void j1App::FinishUpdate()
 // Call modules before each loop iteration
 bool j1App::PreUpdate()
 {
-	BROFILER_CATEGORY("PreUpdate", Profiler::Color::Green);
 	bool ret = true;
 	p2List_item<j1Module*>* item;
 	item = modules.start;
@@ -310,7 +303,6 @@ bool j1App::PreUpdate()
 // Call modules on each loop iteration
 bool j1App::DoUpdate()
 {
-	BROFILER_CATEGORY("Update", Profiler::Color::Orchid);
 	bool ret = true;
 	p2List_item<j1Module*>* item;
 	item = modules.start;
@@ -333,7 +325,6 @@ bool j1App::DoUpdate()
 // Call modules after each loop iteration
 bool j1App::PostUpdate()
 {
-	BROFILER_CATEGORY("PostUpdate", Profiler::Color::Red);
 	bool ret = true;
 	p2List_item<j1Module*>* item;
 	j1Module* pModule = NULL;

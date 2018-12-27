@@ -18,7 +18,6 @@
 #include "ModuleEnemies.h"
 #include "Image.h"
 #include "j1Window.h"
-#include "Brofiler/Brofiler.h"
 
 Player::Player() : j1Module()
 {
@@ -38,7 +37,6 @@ bool Player::Awake(pugi::xml_node& config)
 
 bool Player::Start()
 {
-	BROFILER_CATEGORY("Player: Start", Profiler::Color::DarkGreen)
 	bool ret = true;
 	
 	texture = App->tex->Load("textures/ship.png");
@@ -55,13 +53,11 @@ bool Player::Start()
 }
 bool Player::PreUpdate() //Here we preload the input functions to determine the state of the player
 {
-	BROFILER_CATEGORY("Player: PreUpdate", Profiler::Color::Green);
 	
 	return true;
 }
 bool Player::Update(float dt)
 {
-	BROFILER_CATEGORY("Player: Update", Profiler::Color::Green);
 	DT = dt;
 
 	if (Controls)
@@ -81,7 +77,6 @@ bool Player::Update(float dt)
 
 bool Player::PostUpdate()
 {
-	BROFILER_CATEGORY("Player: PostUpdate", Profiler::Color::Green);
 	if (App->input->GetKey(SDL_SCANCODE_F10) == KEY_DOWN) {
 		if (GOD) {
 			GOD = false;

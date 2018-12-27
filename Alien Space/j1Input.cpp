@@ -5,7 +5,6 @@
 #include "j1Window.h"
 #include "SDL/include/SDL.h"
 
-#include "Brofiler/Brofiler.h"
 
 #define MAX_KEYS 300
 
@@ -50,7 +49,6 @@ bool j1Input::Start()
 // Called each loop iteration
 bool j1Input::PreUpdate()
 {
-	BROFILER_CATEGORY("Input: PreUpdate", Profiler::Color::ForestGreen);
 	static SDL_Event event;
 	
 	const Uint8* keys = SDL_GetKeyboardState(NULL);

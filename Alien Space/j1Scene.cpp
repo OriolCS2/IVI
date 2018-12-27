@@ -15,7 +15,6 @@
 #include "ModuleEnemies.h"
 #include "j1FadeToBlack.h"
 
-#include "Brofiler/Brofiler.h"
 
 j1Scene::j1Scene() : j1Module()
 {
@@ -41,7 +40,6 @@ bool j1Scene::Awake(pugi::xml_node& config)
 // Called before the first frame
 bool j1Scene::Start()
 {
-	BROFILER_CATEGORY("Scene: Start", Profiler::Color::LightYellow);
 	space = App->tex->Load("textures/space.png");
 	App->audio->PlayMusic("audio/music/Space Cube.ogg");
 
@@ -51,15 +49,12 @@ bool j1Scene::Start()
 // Called each loop iteration
 bool j1Scene::PreUpdate()
 {
-	BROFILER_CATEGORY("Scene: PreUpdate", Profiler::Color::LightYellow);
 	return true;
 }
 
 // Called each loop iteration
 bool j1Scene::Update(float dt)
 {
-	BROFILER_CATEGORY("Scene: Update", Profiler::Color::LightYellow);
-	
 	App->render->Blit(space, 0, 0, NULL);
 
 	// SE LI HA DE DIR AL XAN
@@ -215,7 +210,6 @@ bool j1Scene::Update(float dt)
 // Called each loop iteration
 bool j1Scene::PostUpdate()
 {
-	BROFILER_CATEGORY("Scene: PostUpdate", Profiler::Color::LightYellow);
 	bool ret = true;
 
 

@@ -4,7 +4,6 @@
 #include "j1Window.h"
 #include "j1Render.h"
 
-#include "Brofiler/Brofiler.h"
 
 #define VSYNC false
 
@@ -66,21 +65,19 @@ bool j1Render::Start()
 // Called each loop iteration
 bool j1Render::PreUpdate()
 {
-	BROFILER_CATEGORY("Render: PreUpdate", Profiler::Color::Black);
+
 	SDL_RenderClear(renderer);
 	return true;
 }
 
 bool j1Render::Update(float dt)
 {
-	BROFILER_CATEGORY("Render: Update", Profiler::Color::Black);
 	LOG("Camera.y = %i", camera.y);
 	return true;
 }
 
 bool j1Render::PostUpdate()
 {
-	BROFILER_CATEGORY("Render: PostUpdate", Profiler::Color::Black);
 	SDL_SetRenderDrawColor(renderer, background.r, background.g, background.g, background.a);
 	SDL_RenderPresent(renderer);
 	return true;
@@ -114,7 +111,6 @@ void j1Render::ResetViewPort()
 // Blit to screen
 bool j1Render::Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* section, SDL_RendererFlip flip, float speed, double angle, int pivot_x, int pivot_y) const
 {
-	BROFILER_CATEGORY("Render: Blit", Profiler::Color::DarkMagenta);
 	bool ret = true;
 	uint scale = App->win->GetScale();
 
@@ -156,7 +152,6 @@ bool j1Render::Blit(SDL_Texture* texture, int x, int y, const SDL_Rect* section,
 
 bool j1Render::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a, bool filled, bool use_camera) const
 {
-	BROFILER_CATEGORY("Render: Quad", Profiler::Color::DarkMagenta);
 	bool ret = true;
 	uint scale = App->win->GetScale();
 
@@ -185,7 +180,6 @@ bool j1Render::DrawQuad(const SDL_Rect& rect, Uint8 r, Uint8 g, Uint8 b, Uint8 a
 
 bool j1Render::DrawLine(int x1, int y1, int x2, int y2, Uint8 r, Uint8 g, Uint8 b, Uint8 a, bool use_camera) const
 {
-	BROFILER_CATEGORY("Render: Line", Profiler::Color::DarkMagenta);
 	bool ret = true;
 	uint scale = App->win->GetScale();
 
@@ -210,7 +204,6 @@ bool j1Render::DrawLine(int x1, int y1, int x2, int y2, Uint8 r, Uint8 g, Uint8 
 
 bool j1Render::DrawCircle(int x, int y, int radius, Uint8 r, Uint8 g, Uint8 b, Uint8 a, bool use_camera) const
 {
-	BROFILER_CATEGORY("Render: Circle", Profiler::Color::DarkMagenta);
 	bool ret = true;
 	uint scale = App->win->GetScale();
 

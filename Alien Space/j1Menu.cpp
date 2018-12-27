@@ -16,7 +16,6 @@
 #include "Image.h"
 #include "UI_Manager.h"
 
-#include "Brofiler/Brofiler.h"
 
 j1Menu::j1Menu() : j1Module()
 {
@@ -78,7 +77,6 @@ bool j1Menu::Start()
 // Called each loop iteration
 bool j1Menu::PreUpdate()
 {
-	BROFILER_CATEGORY("Menu: PreUpdate", Profiler::Color::Aquamarine);
 	App->input->GetMousePosition(mouse.x, mouse.y);
 
 	if (App->input->GetKey(SDL_SCANCODE_SPACE) == KEY_DOWN && !GameOn && !start) {
@@ -96,7 +94,6 @@ bool j1Menu::PreUpdate()
 // Called each loop iteration
 bool j1Menu::Update(float dt)
 {
-	BROFILER_CATEGORY("Menu: Update", Profiler::Color::Aquamarine);
 	if (start) {
 		if (!GameOn) {
 			if (InMainMenu)
@@ -110,7 +107,6 @@ bool j1Menu::Update(float dt)
 // Called each loop iteration
 bool j1Menu::PostUpdate()
 {
-	BROFILER_CATEGORY("Menu: PostUpdate", Profiler::Color::Aquamarine);
 	bool ret = true;
 	if (!GameOn) {
 		if (Exit)
