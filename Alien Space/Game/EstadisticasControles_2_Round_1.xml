@@ -1,8 +1,8 @@
 <?xml version="1.0"?>
 <ESTADISTICAS_DEL_JUGADOR>
 	<Controles Tipo="Controles_2" />
-	<Numero_De_Muertes value="0" />
-	<Enemigos_Asesinados value="13" />
-	<Numero_de_Disparos value="30" />
-	<Porcentaje_Disparos_Acertados value="43.3333321" />
+	<Numero_De_Muertes value="1" />
+	<Enemigos_Asesinados value="20" />
+	<Numero_de_Disparos value="52" />
+	<Porcentaje_Disparos_Acertados value="38.4615402" />
 </ESTADISTICAS_DEL_JUGADOR>

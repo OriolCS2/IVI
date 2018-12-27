@@ -445,6 +445,11 @@ void j1Scene::ResetRounds()
 	SaveXMLROUND2 = false;
 	SaveXMLROUND3 = false;
 	SaveXMLROUND4 = false;
+
+	ResetRound1 = true;
+	ResetRound2 = true;
+	ResetRound3 = true;
+	ResetRound4 = true;
 }
 
 

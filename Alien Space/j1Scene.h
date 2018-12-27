@@ -59,7 +59,10 @@ public:
 	bool SpawnRound10 = true;
 	bool SpawnRound11 = true;
 	bool SpawnRound12 = true;
-
+	bool ResetRound1 = true;
+	bool ResetRound2 = true;
+	bool ResetRound3 = true;
+	bool ResetRound4 = true;
 	bool CanFinish = false;
 
 	int Time = 0;

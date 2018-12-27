@@ -505,5 +505,8 @@ bool j1App::SavegameNow() const
 
 	data.reset();
 	want_to_save = false;
+	App->player->EnemiesKilled = 0;
+	App->player->NumeroDeMuertes = 0;
+	App->player->ShootNum = 0;
 	return ret;
 }
