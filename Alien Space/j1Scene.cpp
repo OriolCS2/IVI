@@ -96,9 +96,6 @@ bool j1Scene::Update(float dt)
 				App->player->Estadisticas.create("EstadisticasControles_2_Round_1.xml");
 			App->SaveGame(App->player->Estadisticas.GetString());
 			rounds->ChangeLabel("ROUND 2", 40);
-			App->player->NumeroDeMuertes = 0;
-			App->player->ShootNum = 0;
-			App->player->EnemiesKilled = 0;
 		}
 		StartRound1 = false;
 		StartRound2 = true;
@@ -133,9 +130,6 @@ bool j1Scene::Update(float dt)
 				App->player->Estadisticas.create("EstadisticasControles_2_Round_2.xml");
 			App->SaveGame(App->player->Estadisticas.GetString());
 			rounds->ChangeLabel("ROUND 3", 40);
-			App->player->NumeroDeMuertes = 0;
-			App->player->ShootNum = 0;
-			App->player->EnemiesKilled = 0;
 		}
 		StartRound2 = false;
 		StartRound3 = true;
@@ -170,9 +164,6 @@ bool j1Scene::Update(float dt)
 				App->player->Estadisticas.create("EstadisticasControles_2_Round_3.xml");
 			App->SaveGame(App->player->Estadisticas.GetString());
 			rounds->ChangeLabel("ROUND 4", 40);
-			App->player->NumeroDeMuertes = 0;
-			App->player->ShootNum = 0;
-			App->player->EnemiesKilled = 0;
 		}
 		StartRound3 = false;
 		StartRound4 = true;
@@ -214,9 +205,6 @@ bool j1Scene::Update(float dt)
 		App->menu->start = true;
 		App->menu->GameOn = false;
 		App->menu->Start();
-		App->player->ShootNum = 0;
-		App->player->NumeroDeMuertes = 0;
-		App->player->EnemiesKilled = 0;
 		App->ui_manager->DeleteUI_Element(App->scene->rounds);
 		SDL_ShowCursor(SDL_ENABLE);
 		

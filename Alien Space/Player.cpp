@@ -129,8 +129,7 @@ void Player::OnCollision(Collider* c1, Collider* c2) //this determine what happe
 	++NumeroDeMuertes;
 	
 	App->enemies->DeleteEnemies();
-	EnemiesKilled = 0;
-	ShootNum = 0;
+
 	DestroyP = true;
 	if (App->scene->StartRound1) {
 		App->scene->Time = SDL_GetTicks();
