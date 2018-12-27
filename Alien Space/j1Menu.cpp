@@ -70,7 +70,6 @@ bool j1Menu::Start()
 	CreateMainMenu();
 	CreateIntro();
 	WantToDisappearMainMenu(true);
-	App->player->EnemiesKilled = 0;
 	return true;
 }
 
