@@ -128,6 +128,7 @@ bool j1Menu::PostUpdate()
 			App->scene->SpawnEnemies(1);
 			App->player->Start();
 			App->scene->rounds = App->ui_manager->CreateLabel(350, 10, "ROUND 1", 40, false);
+			App->scene->rounds->ChangeLabel("ROUND 1", 40);
 			GameOn = true;
 		}
 	}
